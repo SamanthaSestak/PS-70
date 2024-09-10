@@ -6,21 +6,26 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
   <style>
+    .image-container {
+      text-align: center; /* Center the images in the container */
+      margin-bottom: 20px;
+    }
+
     .image-container img {
       border-radius: 50%;
       border: 3px solid #000;
       width: 300px; /* Increased size */
       height: 300px; /* Increased size */
+      margin: 10px; /* Space between images */
     }
 
-    .image-container .first-img {
-      float: left;
-      margin-right: 10px; /* Space between image and text */
+    .first-img {
+      float: none; /* Remove float */
     }
 
-    .image-container .second-img {
-      display: block;
-      margin-bottom: 10px; /* Space between images */
+    .second-img {
+      display: block; /* Display as block to stack below */
+      margin: 0 auto; /* Center the image */
     }
 
     .textcontainer {
@@ -65,8 +70,8 @@
 
 <h3>About Me</h3>
 
-<!-- Image container with first image floating -->
-<div class="image-container" style="margin-bottom: 20px;">
+<!-- Image container centered on page -->
+<div class="image-container">
   <!-- First image -->
   <img src="./IMG_7367.jpg" alt="about me image 1" class="first-img">
   
