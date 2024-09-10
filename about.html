@@ -7,7 +7,8 @@
   <link href="./style.css" rel="stylesheet">
   <style>
     .image-container {
-      text-align: center; /* Center the images in the container */
+      display: flex; /* Use flexbox */
+      justify-content: center; /* Center images horizontally */
       margin-bottom: 20px;
     }
 
@@ -20,12 +21,11 @@
     }
 
     .first-img {
-      float: none; /* Remove float */
+      /* No float needed */
     }
 
     .second-img {
-      display: block; /* Display as block to stack below */
-      margin: 0 auto; /* Center the image */
+      /* No special display needed */
     }
 
     .textcontainer {
@@ -75,7 +75,7 @@
   <!-- First image -->
   <img src="./IMG_7367.jpg" alt="about me image 1" class="first-img">
   
-  <!-- Second image below the first -->
+  <!-- Second image -->
   <img src="./007.JPG" alt="about me image 2" class="second-img">
 </div>
 
