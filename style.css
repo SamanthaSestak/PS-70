@@ -1,29 +1,22 @@
 body {
-    background-color: #E0F7FA; /* Even lighter blue background */
-}
-
-.navbar {
-    background-color: #E0F7FA; /* Set navbar background to the lighter blue */
-}
-
-.nav-title {
-    background-color: #E0F7FA; /* Set the background of the h2 element to the lighter blue */
-}
-
-body {
     font: 20px "Gill Sans", Verdana, sans-serif;
     line-height: 1.8;
     color: #000000;
-    background-color: #dcdcdc;
+    background-color: #E0F7FA; /* Updated to an even lighter blue */
     padding-top: 0px !important;
-  }
-
-.textcontainer {
-  padding: 2% 10%;;
 }
 
-p {font-size: 16px;}
-.margin {margin-bottom: 30px;}
+.textcontainer {
+  padding: 2% 10%;
+}
+
+p {
+  font-size: 16px;
+}
+
+.margin {
+  margin-bottom: 30px;
+}
 
 a {
   color: #000000;
@@ -35,8 +28,8 @@ a {
 }
 
 nav {
-  background-color: #dcdcdc;
-  color: #EEE7E8;
+  background-color: #E0F7FA; /* Updated to match the body background color */
+  color: #000000; /* Changed color to maintain contrast */
   padding: 50px 0px;
 }
 
@@ -46,10 +39,11 @@ nav {
   gap: 30px;
 }
 
-.nav-title{
+.nav-title {
   margin-left: 15px;
   margin-right: 15px;
   color: #000000;
+  background-color: #E0F7FA; /* Updated to match the nav background color */
 }
 
 .nav-link {
