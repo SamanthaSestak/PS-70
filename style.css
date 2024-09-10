@@ -1,4 +1,16 @@
 body {
+    background-color: #E0F7FA; /* Even lighter blue background */
+}
+
+.navbar {
+    background-color: #E0F7FA; /* Set navbar background to the lighter blue */
+}
+
+.nav-title {
+    background-color: #E0F7FA; /* Set the background of the h2 element to the lighter blue */
+}
+
+body {
     font: 20px "Gill Sans", Verdana, sans-serif;
     line-height: 1.8;
     color: #000000;
