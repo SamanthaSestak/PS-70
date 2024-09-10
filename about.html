@@ -5,6 +5,18 @@
   <title>PS70: Intro to Digital Fabrication</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
+  <style>
+    .image-container img {
+      float: left;
+      margin-right: 10px;
+      border-radius: 50%;
+      border: 3px solid #000;
+    }
+
+    .textcontainer {
+      overflow: hidden; /* Clear floats */
+    }
+  </style>
 </head>
 
 <body>
@@ -26,13 +38,13 @@
 
 <h3>About Me</h3>
 
-<!-- Image container with two images side by side -->
-<div class="image-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<!-- Image container without flex -->
+<div class="image-container" style="margin-bottom: 20px;">
   <!-- First image -->
-  <img src="./IMG_7367.jpg" alt="about me image 1" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 3px solid #000; margin-right: 10px; float: left;"> <!-- Increased size and adjusted margin -->
+  <img src="./IMG_7367.jpg" alt="about me image 1" style="width: 200px; height: 200px; object-fit: cover;">
   
   <!-- Second image -->
-  <img src="./007.JPG" alt="about me image 2" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 3px solid #000; float: left;"> <!-- Increased size -->
+  <img src="./007.JPG" alt="about me image 2" style="width: 200px; height: 200px; object-fit: cover;">
 </div>
 
 <!-- Text section -->
@@ -55,6 +67,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
+
 
 
 
