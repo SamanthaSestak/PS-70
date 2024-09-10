@@ -7,12 +7,20 @@
   <link href="./style.css" rel="stylesheet">
   <style>
     .image-container img {
-      display: block; /* Stack images vertically */
-      margin-bottom: 10px; /* Add space between images */
       border-radius: 50%;
       border: 3px solid #000;
       width: 300px; /* Increased size */
       height: 300px; /* Increased size */
+    }
+
+    .image-container .first-img {
+      float: left;
+      margin-right: 10px; /* Space between image and text */
+    }
+
+    .image-container .second-img {
+      display: block;
+      margin-bottom: 10px; /* Space between images */
     }
 
     .textcontainer {
@@ -57,13 +65,13 @@
 
 <h3>About Me</h3>
 
-<!-- Image container with vertical stacking -->
+<!-- Image container with first image floating -->
 <div class="image-container" style="margin-bottom: 20px;">
   <!-- First image -->
-  <img src="./IMG_7367.jpg" alt="about me image 1">
+  <img src="./IMG_7367.jpg" alt="about me image 1" class="first-img">
   
   <!-- Second image below the first -->
-  <img src="./007.JPG" alt="about me image 2">
+  <img src="./007.JPG" alt="about me image 2" class="second-img">
 </div>
 
 <!-- Text section -->
