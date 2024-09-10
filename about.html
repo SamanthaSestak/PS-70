@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS70: Intro to Digital Fabrication</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #343a40;">
-    <div class="container-fluid">
-      <h2 class="navbar-brand">PS70 Fall 2024</h2>
-      <div class="navbar-nav">
-        <a class="nav-link" href="./index.html">Home</a>
-        <a class="nav-link" href="./about.html">About</a>
-        <a class="nav-link" href="./project_proposal.html">Project Proposal</a>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-sm navbar-dark" style="color: #EEE7E8;">
+        <div class="container-fluid" style="align-items: center; justify-content: center;">
+            <div class="flexrow">
+                <h2 class="nav-title">PS70 Fall 2024</h2>
+            </div>
+            <div class="navbar-nav">
+                <h4><a class="nav-link" href="./index.html">Home</a></h4>
+                <h4><a class="nav-link" href="./about.html">About</a></h4>
+            </div>
+        </div>
+    </nav>
 
-  <div class="container mt-5">
-    <h3>About Me</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <img src="./about-me-placeholder.jpg" alt="Your Photo" class="img-fluid">
-      </div>
-      <div class="col-md-6">
-        <p>Hello! I’m [Your Name], a student at PS70. I’m currently in my [year], and I’m passionate about digital fabrication, design, and technology. I live in [your dorm/residence], and I love exploring how technology can solve real-world problems. When I’m not working on projects, you’ll find me [add hobbies or other personal interests].</p>
-      </div>
-    </div>
-    <p>Feel free to explore this website to learn more about my projects and journey in digital fabrication!</p>
-  </div>
+    <div class="textcontainer">
+        <h3>About Me</h3>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <p class="margin"></p>
+        <div class="center-row">
+            <img src="./IMG_7367.jpg" alt="Samantha Sestak" style="width: 300px; height: auto; margin-bottom: 10px;">
+            <p id="aboutme">
+                My name is Samantha Sestak, and I am a senior in Currier House, majoring in Bioengineering with a secondary focus in Global Health. My academic and professional interests encompass medical device design, infectious disease research, and addressing healthcare inequities. I aspire to bridge the gap between the technologies I develop and the communities they are intended to serve, especially those whose needs are often not considered in the development of healthcare innovations. Originally from Queens, New York, I am the oldest of four. My family shares a random, yet deep, passion for Spanish soccer and culture, and we are devoted FC Barcelona fans—if you want, I can even recite the Catalan anthem from memory for you! Growing up, my brother and I closely followed every La Liga match and participated in La Quiniela, a neighborhood betting game organized by my mother (who, unsurprisingly, won every year). When I’m not playing or watching soccer, you’ll likely find me engrossed in superhero comics, Lord of the Rings trivia, British detective shows, or trying different food spots across New York City.
+            </p>
+        </div>
+
+        <br><br>
+        <p>Hello there is more text here, feel free to go into more detail about stuff you are interested in as well. As well as place more images if you are interested in those things.</p>
+        <br><br>
+        <img src="./generic-placeholder-image.jpg" alt="generic placeholder image" style="width: 300px; height: auto; margin-bottom: 10px;">
+        <br><br>
+        <p>Maybe even add a video?</p>
+        <br>
+        <video width="640" height="480" controls>
+            <source src="temp-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script src="./strapdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
