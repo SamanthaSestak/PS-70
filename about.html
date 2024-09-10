@@ -7,8 +7,8 @@
   <link href="./style.css" rel="stylesheet">
   <style>
     .image-container img {
-      float: left;
-      margin-right: 10px;
+      display: block; /* Stack images vertically */
+      margin-bottom: 10px; /* Add space between images */
       border-radius: 50%;
       border: 3px solid #000;
       width: 300px; /* Increased size */
@@ -57,12 +57,12 @@
 
 <h3>About Me</h3>
 
-<!-- Image container without flex -->
+<!-- Image container with vertical stacking -->
 <div class="image-container" style="margin-bottom: 20px;">
   <!-- First image -->
   <img src="./IMG_7367.jpg" alt="about me image 1">
   
-  <!-- Second image -->
+  <!-- Second image below the first -->
   <img src="./007.JPG" alt="about me image 2">
 </div>
 
