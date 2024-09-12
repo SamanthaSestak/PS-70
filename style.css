@@ -148,7 +148,7 @@ nav {
 /* Flexbox container for image and text */
 .about-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center; /* Center items horizontally */
     margin: 2rem 2rem;
     text-align: left; /* Align text to the left */
