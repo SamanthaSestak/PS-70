@@ -130,11 +130,11 @@ nav {
 
 /* About Section */
 .about {
-    background: linear-gradient(360deg, #E0F7FA 0%, #B2DFDB 100%); /* Lighter blue gradient */
+    background: rgb(224, 251, 255); /* Light blue background */
+    background: linear-gradient(360deg, #E0F7FA 0%, #B0E0E6 100%); /* Light blue gradient */
     padding: 100px 0 20px 0;
     text-align: center;
 }
-
 
 .about h1 {
     font-size: 2.5rem;
@@ -149,11 +149,12 @@ nav {
 }
 
 .about-info {
-    margin: 2rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: left; /* Ensure the content is centered */
+    text-align: left; /* Align text to the left of its container */
+    flex-direction: row; /* Align image and text in a row */
+    margin: 2rem;
 }
 
 .about-img {
