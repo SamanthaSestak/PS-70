@@ -3,6 +3,8 @@
 
 <head>
   <title>PS70: Intro to Digital Fabrication</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
   <style>
@@ -21,7 +23,9 @@
     }
 
     .textcontainer {
-      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
     #aboutme {
@@ -44,29 +48,44 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm navbar-dark" style="color: #EEE7E8; background-color: #343a40;">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="./index.html">Home</a>
-        <a class="nav-link" href="./about.html">About</a>
+      <a class="navbar-brand" href="#">PS70 Fall 2024</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
 
-  <div class="textcontainer" style="margin: 0 auto; max-width: 1200px; padding: 20px;">
+  <!-- Content -->
+  <div class="textcontainer">
     <h3>About Me</h3>
+
+    <!-- Image container -->
     <div class="image-container">
-      <img src="./IMG_7367.jpg" alt="about me image 1" class="first-img">
-      <img src="./007.JPG" alt="about me image 2" class="second-img">
+      <img src="./IMG_7367.jpg" alt="about me image 1">
+      <img src="./007.JPG" alt="about me image 2">
     </div>
 
+    <!-- Text section -->
     <div style="margin: 0 150px;">
       <p id="aboutme">
         My name is Samantha Sestak, and I am a senior in Currier House, majoring in Bioengineering with a secondary focus in Global Health. My academic and professional interests encompass medical device design, infectious disease research, and addressing healthcare inequities. I aspire to bridge the gap between the technologies I develop and the communities they are intended to serve, especially those whose needs are often not considered in the development of healthcare innovations. Originally from Queens, New York, I am the oldest of four. My family shares a random, yet deep, passion for Spanish soccer and culture, and we are devoted FC Barcelona fans—if you want, I can even recite the Catalan anthem from memory for you! Growing up, my brother and I closely followed every La Liga match and participated in La Quiniela, a neighborhood betting game organized by my mother (who, unsurprisingly, won every year). When I’m not playing or watching soccer, you’ll likely find me engrossed in superhero comics, Lord of the Rings trivia, British detective shows, or trying different food spots across New York City.
       </p>
     </div>
 
+    <!-- Centered bottom images -->
     <div class="bottom-images">
       <img src="./fcb.jpg" alt="about me image 1">
       <img src="./LOTR.jpg" alt="about me image 1">
@@ -74,8 +93,7 @@
     </div>
   </div>
 
-  <script src="./strapdown.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
