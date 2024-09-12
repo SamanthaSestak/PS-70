@@ -143,12 +143,14 @@ nav {
     color: #323030;
     max-width: 800px;
     margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* Flexbox container for image and text */
 .about-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center; /* Center items horizontally */
     margin: 2rem 2rem;
     text-align: left; /* Align text to the left */
@@ -157,16 +159,16 @@ nav {
 /* Image styling */
 .about-img {
     width: 25rem; /* Adjust size as needed */
-    height: 55rem; /* Adjust size as needed */
+    height: auto; /* Adjust size as needed */
     margin-right: 2rem; /* Space between image and text */
     display: flex;
     justify-content: center; /* Center the image horizontally */
-    align-items: center;
+    align-items: flex-start;
 }
 
 .about-img img {
     width: 100%;
-    height: 100%;
+    height: auto%;
     border-radius: 5px;
     object-fit: contain; /* Ensure image fits container */
 }
