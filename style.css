@@ -179,73 +179,6 @@ nav {
     text-align: justify;
 }
 
-/* Interest Section */
-.interests {
-    background: rgb(240, 248, 255);
-    background: linear-gradient(360deg, rgb(240, 248, 255) 0%, rgb(224, 240, 255) 100%);
-    padding: 100px 0 20px 0;
-    text-align: center; /* Center the heading and text */
-}
-
-.interests h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.interests-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.card {
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 18rem;
-    height: 25rem;
-    margin-top: 10px;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
-}
-
-.card-img {
-    width: 18rem;
-    height: 12rem;
-}
-
-.card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-}
-
-.card-info button {
-    margin: 2rem 1rem;
-}
-
-.card-name {
-    font-size: 2rem;
-    margin: 10px 0;
-}
-
-.card-info1 {
-    font-size: 1rem;
-    color: #888;
-    margin: 5px 0;
-}
-
-.card-info2 {
-    font-size: 1rem;
-    color: #555;
-}
 
 @media (max-width: 768px) {
     nav {
@@ -291,10 +224,6 @@ nav {
     .about-info button {
         margin: 1rem 2rem;
         width: 10rem;
-    }
-
-    .interests {
-        margin: 0 1rem;
     }
 }
 
