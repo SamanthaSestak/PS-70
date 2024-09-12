@@ -131,7 +131,7 @@ nav {
 /* About Section */
 .about {
     background: rgb(224, 251, 255); /* Light blue background */
-    background: linear-gradient(360deg, rgb(245, 255, 255) 0%, rgb(173, 216, 230) 100%); /* Light blue gradient */
+    background: linear-gradient(360deg, #E0F7FA 0%, #B0E0E6 100%); /* Light blue gradient */
     padding: 100px 0 20px 0;
     text-align: center;
 }
@@ -201,3 +201,12 @@ button {
 button:hover {
     background-color: #87CEEB;
 }
+
+/* Footer */
+footer {
+    background-color: #000000; /* Black background */
+    color: white; /* White text */
+    text-align: center;
+    padding: 20px 0;
+}
+
