@@ -303,6 +303,11 @@ footer {
     }
 }
 
+
+
+
+
+
 /* Home Page Section */
 .home-page {
     background-color: #E0F7FA; /* Light blue background for the home page */
@@ -317,22 +322,45 @@ footer {
     padding: 0; /* Remove default padding */
 }
 
-.home-page .container-fluid img {
+.home-page .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.home-page .image-grid-item {
+    flex: 1 1 calc(33% - 40px); /* Three columns with spacing */
+    box-sizing: border-box;
+    border: 2px solid #a3a3a3;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFF; /* White background for items */
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.home-page .image-grid-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.home-page .image-grid-item img {
     width: 100%; /* Ensure images fit the container */
-    height: 200px; /* Fixed height for images */
+    height: 150px; /* Fixed height for images */
     object-fit: cover; /* Cover the area of the image */
 }
 
-.home-page .image-link {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
+.home-page .image-grid-item .text {
+    padding: 10px;
 }
 
-.home-page .image-link span {
-    display: block;
-    margin-top: 10px; /* Space between image and text */
+.home-page .image-grid-item .text h3 {
+    margin: 0;
+    color: #000000;
+}
+
+.home-page .image-grid-item .text p {
+    color: #333333;
 }
 
 .home-page .navbar-nav {
@@ -365,16 +393,19 @@ footer {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .home-page .navbar-nav {
+    .home-page .image-grid {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
     }
 
-    .home-page .container-fluid img {
+    .home-page .image-grid-item {
+        flex: 1 1 100%; /* Full width on smaller screens */
+    }
+
+    .home-page .image-grid-item img {
         height: auto; /* Adjust image height for smaller screens */
     }
 }
-
 
 
 
