@@ -152,14 +152,15 @@ nav {
 .about-info {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align items to the start (left) */
+    justify-content: center; /* Center items horizontally */
     margin: 2rem auto;
     max-width: 1200px; /* Optional: Limit the max width of the container */
 }
 
+/* Image styling */
 .about-img {
-    width: 25rem; /* Larger image size */
-    height: 25rem; /* Adjust height to match */
+    width: 25rem; /* Adjust size as needed */
+    height: 25rem; /* Adjust size as needed */
     margin-right: 2rem; /* Space between image and text */
 }
 
@@ -167,14 +168,28 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    object-fit: cover; /* Make the image fit the container */
+    object-fit: cover; /* Ensure image fits container */
+}
+
+/* Text styling */
+.about-info div {
+    max-width: 100%; /* Extend text container wider */
+    text-align: left; /* Align text to the left */
 }
 
 .about-info p {
     font-size: 1.3rem;
     margin: 0;
-    max-width: 600px; /* Optional: Limit the width of the text for readability */
+    /* Ensure text can extend further to the right */
 }
+
+/* Update the background color for the section */
+.about {
+    background: #E0F7FA; /* Even lighter blue background */
+    padding: 100px 0 20px 0;
+    text-align: center; /* Center the heading and text */
+}
+
 
 
 /* Logo (PS 70 Fall 2024) */
