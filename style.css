@@ -130,11 +130,11 @@ nav {
 
 /* About Section */
 .about {
-    background: rgb(224, 251, 255); /* Light blue background */
-    background: linear-gradient(360deg, #E0F7FA 0%, #B0E0E6 100%); /* Light blue gradient */
+    background: linear-gradient(360deg, #E0F7FA 0%, #B2DFDB 100%); /* Lighter blue gradient */
     padding: 100px 0 20px 0;
     text-align: center;
 }
+
 
 .about h1 {
     font-size: 2.5rem;
@@ -153,14 +153,13 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Ensure the content is centered */
-    flex-direction: column; /* Stack image and text vertically */
+    text-align: left; /* Ensure the content is centered */
 }
 
 .about-img {
-    width: 25rem; /* Larger image size */
-    height: 25rem; /* Adjust height to match */
-    margin-bottom: 2rem; /* Add some space below the image */
+    width: 15rem; /* Larger image size */
+    height: 15rem; /* Adjust height to match */
+    margin-right: 2rem; /* Add some space below the image */
 }
 
 .about-img img {
@@ -172,8 +171,8 @@ nav {
 
 .about-info p {
     font-size: 1.3rem;
-    margin: 0 2rem;
-    text-align: justify;
+    margin: 0;
+    text-align: left;
 }
 
 /* Logo (PS 70 Fall 2024) */
