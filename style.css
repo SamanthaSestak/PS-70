@@ -155,6 +155,7 @@ nav {
     justify-content: center; /* Center items horizontally */
     margin: 2rem auto;
     max-width: 1200px; /* Optional: Limit the max width of the container */
+    text-align: left; /* Align text to the left */
 }
 
 /* Image styling */
@@ -173,23 +174,21 @@ nav {
 
 /* Text styling */
 .about-info div {
-    max-width: 100%; /* Extend text container wider */
+    max-width: 100%; /* Allow text container to extend wider */
     text-align: left; /* Align text to the left */
 }
 
 .about-info p {
     font-size: 1.3rem;
     margin: 0;
-    /* Ensure text can extend further to the right */
 }
 
-/* Update the background color for the section */
+/* Background gradient */
 .about {
-    background: #E0F7FA; /* Even lighter blue background */
+    background: linear-gradient(to right, #E0F7FA, #B0E0E6); /* Light blue gradient */
     padding: 100px 0 20px 0;
     text-align: center; /* Center the heading and text */
 }
-
 
 
 /* Logo (PS 70 Fall 2024) */
