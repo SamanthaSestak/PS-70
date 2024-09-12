@@ -37,6 +37,8 @@ a {
 
 /* Header */
 header {
+    background-color: #FFFFFF; /* White */
+    border-bottom: 2px solid #00BFFF; 
     background-color: E0F7FA;
     color: rgb(0, 0, 0);
     padding: 10px 0;
@@ -229,7 +231,7 @@ button {
     margin: 2rem;
     font-size: 1rem;
     color: white;
-    background-color: #0033CC;
+    background-color: #00FFFF;
     text-align: center;
     cursor: pointer;
     width: 15rem;
@@ -247,4 +249,96 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+
+/* Final Project Section */
+.final-project {
+    background: linear-gradient(360deg, #E0FFFF 0%, #E0FFFF 100%);
+    padding: 100px 0 20px 0;
+    text-align: center; /* Center the heading and text */
+}
+
+.final-project h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.final-project p {
+    font-size: 1rem;
+    color: #323030;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Flexbox container for image and text */
+.final-project-info {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+    margin: 2rem 2rem;
+    text-align: left; /* Align text to the left */
+}
+
+/* Image styling */
+.final-project-img {
+    width: 25rem; /* Adjust size as needed */
+    height: 35rem; /* Adjust size as needed */
+    margin-right: 2rem; /* Space between image and text */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+}
+
+.final-project-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: contain; /* Ensure image fits container */
+}
+
+.final-project-info p {
+    font-size: 1.3rem;
+    margin: 0 2rem;
+    text-align: justify;
+}
+
+.final-project button {
+    border: none;
+    outline: 0;
+    padding: 10px;
+    margin: 2rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #00FFFF;
+    text-align: center;
+    cursor: pointer;
+    width: 15rem;
+    border-radius: 4px;
+}
+
+.final-project button:hover {
+    background-color: #1f9405;
+}
+
+/* Responsive design for final project section */
+@media (max-width: 768px) {
+    .final-project-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .final-project-img {
+        width: 60%;
+        height: 60%;
+        margin-bottom: 1rem;
+    }
+
+    .final-project-info p {
+        margin: 1rem 2rem;
+    }
+
+    .final-project button {
+        margin: 1rem 2rem;
+        width: 10rem;
+    }
+}
+
 
