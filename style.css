@@ -38,7 +38,7 @@ a {
 /* Header */
 header {
     background-color: #FFFFFF; /* White */
-    border-bottom: 2px solid #00BFFF; 
+    border-bottom: 2px solid #4169E1; 
     color: rgb(0, 0, 0);
     padding: 10px 0;
     position: fixed;
@@ -230,7 +230,7 @@ button {
     margin: 2rem;
     font-size: 1rem;
     color: white;
-    background-color: #00FFFF;
+    background-color: ##4169E1;
     text-align: center;
     cursor: pointer;
     width: 15rem;
@@ -238,7 +238,7 @@ button {
 }
 
 button:hover {
-    background-color: #1f9405;
+    background-color: #0077BE;
 }
 
 /* Footer */
@@ -250,76 +250,59 @@ footer {
 }
 
 /* Final Project Section */
+/* Final Project Section */
 .final-project {
-    background: linear-gradient(360deg, #E0FFFF 0%, #E0FFFF 100%);
+    background: linear-gradient(360deg, #E0F7FA 0%, #E0F7FA 100%);
     padding: 100px 0 20px 0;
     text-align: center; /* Center the heading and text */
 }
 
-.final-project h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.final-project h4 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #323030; /* Dark text color for headings */
 }
 
-.final-project p {
-    font-size: 1rem;
-    color: #323030;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Flexbox container for image and text */
 .final-project-info {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center; /* Center items horizontally */
     margin: 2rem 2rem;
+}
+
+.project {
+    background-color: #FFFFFF; /* White background for project containers */
+    border: 1px solid #E0F7FA; /* Light blue border matching the background */
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem;
+    max-width: 300px; /* Set a max width for responsiveness */
     text-align: left; /* Align text to the left */
 }
 
-/* Image styling */
-.final-project-img {
-    width: 20rem; /* Adjust size as needed */
-    height: 20rem; /* Adjust size as needed */
-    margin-right: 2rem; /* Space between image and text */
-    display: flex;
-    justify-content: center; /* Center the image horizontally */
-}
-
-.final-project-img img {
-    width: 100%;
-    height: 100%;
+.project img {
+    width: 100%; /* Ensure image takes full width of its container */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 5px;
-    object-fit: contain; /* Ensure image fits container */
+    margin-bottom: 1rem; /* Space between image and text */
 }
 
-.final-project-info p {
-    font-size: 1.3rem;
-    margin: 0 2rem;
-    text-align: justify;
+.project p {
+    font-size: 1rem;
+    color: #323030; /* Dark text color for paragraphs */
+    margin-bottom: 1rem; /* Space between paragraphs */
 }
 
-/* Responsive design for final project section */
 @media (max-width: 768px) {
     .final-project-info {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
     }
 
-    .final-project-img {
-        width: 60%;
-        height: 60%;
-        margin-bottom: 1rem;
-    }
-
-    .final-project-info p {
-        margin: 1rem 2rem;
-    }
-
-    .final-project button {
-        margin: 1rem 2rem;
-        width: 10rem;
+    .project {
+        max-width: 90%; /* Allow for full width on smaller screens */
     }
 }
+
 
 
