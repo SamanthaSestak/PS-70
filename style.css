@@ -316,8 +316,10 @@ footer {
 
 
 /* Home Page Styles */
+/* Adjust for grid layout on the home page */
 .container-fluid {
-    padding: 20px;
+    background-color: #E0F7FA; /* Even lighter blue background */
+    padding: 2rem 0;
 }
 
 .image-link {
@@ -325,30 +327,31 @@ footer {
     text-align: center;
     text-decoration: none;
     color: black;
-    background-color: #FFFFFF; /* White background for the image containers */
-    border: 1px solid #E0F7FA; /* Light blue border */
-    border-radius: 5px;
-    padding: 1rem;
-    margin-bottom: 2rem; /* Space between each row of images */
-}
-
-.image-link img {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px;
+    margin-bottom: 2rem; /* Space between rows */
 }
 
 .image-link span {
     display: block;
     margin-top: 10px;
-    font-size: 1rem;
-    color: #323030; /* Dark text color for captions */
+}
+
+.container-fluid img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
 }
 
 .row {
-    margin-bottom: 2rem; /* Space between rows */
+    margin: 0; /* Remove default margin */
 }
 
+.col-sm-4 {
+    padding: 0 1rem; /* Add horizontal padding */
+}
 
-
-
+@media (max-width: 768px) {
+    .col-sm-4 {
+        flex: 1 0 100%; /* Stack items on small screens */
+        max-width: 100%; /* Full width on smaller screens */
+    }
+}
