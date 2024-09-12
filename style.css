@@ -126,9 +126,11 @@ nav {
     transition: 0.3s;
 }
 
+/
 /* About Section */
 .about {
-    background: linear-gradient(360deg, #E0F7FA 0%, #E0F7FA 100%);
+    background: rgb(240, 248, 255);
+    background: linear-gradient(360deg, rgb(240, 248, 255) 0%, rgb(224, 240, 255) 100%);
     padding: 100px 0 20px 0;
     text-align: center; /* Center the heading and text */
 }
@@ -143,14 +145,12 @@ nav {
     color: #323030;
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 /* Flexbox container for image and text */
 .about-info {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center; /* Center items horizontally */
     margin: 2rem 2rem;
     text-align: left; /* Align text to the left */
@@ -159,16 +159,15 @@ nav {
 /* Image styling */
 .about-img {
     width: 25rem; /* Adjust size as needed */
-    height: auto; /* Adjust size as needed */
+    height: 35rem; /* Adjust size as needed */
     margin-right: 2rem; /* Space between image and text */
     display: flex;
     justify-content: center; /* Center the image horizontally */
-    align-items: flex-start;
 }
 
 .about-img img {
     width: 100%;
-    height: auto%;
+    height: 100%;
     border-radius: 5px;
     object-fit: contain; /* Ensure image fits container */
 }
@@ -226,23 +225,6 @@ nav {
         width: 10rem;
     }
 }
-button {
-    border: none;
-    outline: 0;
-    padding: 10px;
-    margin: 2rem;
-    font-size: 1rem;
-    color: white;
-    background-color: #87CEEB;
-    text-align: center;
-    cursor: pointer;
-    width: 15rem;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #0077BE;
-}
 
 /* Footer */
 footer {
@@ -251,6 +233,7 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+
 
 /* Final Project Section */
 .final-project {
