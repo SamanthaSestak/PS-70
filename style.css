@@ -38,7 +38,7 @@ a {
 /* Header */
 header {
     background-color: #FFFFFF; /* White */
-    border-bottom: 2px solid #4169E1; 
+    border-bottom: 2px solid #008080; 
     color: rgb(0, 0, 0);
     padding: 10px 0;
     position: fixed;
@@ -230,7 +230,7 @@ button {
     margin: 2rem;
     font-size: 1rem;
     color: white;
-    background-color: ##4169E1;
+    background-color: #008080;
     text-align: center;
     cursor: pointer;
     width: 15rem;
