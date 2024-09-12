@@ -131,7 +131,7 @@ nav {
 /* About Section */
 .about {
     background: rgb(240, 248, 255);
-    background: linear-gradient(360deg, rgb(240,248,255) 0%, rgb(224,255,255) 100%);
+    background: linear-gradient(360deg, rgb(240, 248, 255) 0%, rgb(224, 240, 255) 100%);
     padding: 100px 0 20px 0;
     text-align: center; /* Center the heading and text */
 }
@@ -160,8 +160,10 @@ nav {
 /* Image styling */
 .about-img {
     width: 25rem; /* Adjust size as needed */
-    height: 25rem; /* Adjust size as needed */
+    height: 35rem; /* Adjust size as needed */
     margin-right: 2rem; /* Space between image and text */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
 }
 
 .about-img img {
@@ -177,41 +179,13 @@ nav {
     text-align: justify;
 }
 
-
-/* Logo (PS 70 Fall 2024) */
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000000; /* Change to black */
-}
-
-/* Button styling */
-button {
-    border: none;
-    outline: 0;
-    padding: 10px;
-    margin: 2rem;
-    font-size: 1rem;
-    color: white;
-    background-color: #ADD8E6;
-    text-align: center;
-    cursor: pointer;
-    width: 15rem;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #87CEEB;
-}
-
 /* Interest Section */
-
-.interest {
+.interests {
     padding: 30px 0;
-    text-align: center;
+    text-align: center; /* Center text in interests section */
 }
 
-.interest h1 {
+.interests h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
@@ -329,4 +303,3 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
-
