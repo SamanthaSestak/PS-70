@@ -157,7 +157,7 @@ nav {
 /* Image styling */
 .about-img {
     width: 25rem; /* Adjust size as needed */
-    height: 35rem; /* Adjust size as needed */
+    height: 55rem; /* Adjust size as needed */
     margin-right: 2rem; /* Space between image and text */
     display: flex;
     justify-content: center; /* Center the image horizontally */
