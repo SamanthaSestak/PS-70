@@ -129,11 +129,11 @@ nav {
 }
 
 /* About Section */
+/* About Section */
 .about {
-    background: rgb(224, 251, 255); /* Light blue background */
-    background: linear-gradient(360deg, #E0F7FA 0%, #B0E0E6 100%); /* Light blue gradient */
+    background: #B0E0E6; /* Light blue background */
     padding: 100px 0 20px 0;
-    text-align: center;
+    text-align: center; /* Center the heading and text */
 }
 
 .about h1 {
@@ -148,19 +148,20 @@ nav {
     margin: 0 auto;
 }
 
+/* Flexbox container for image and text */
 .about-info {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: left; /* Align text to the left of its container */
-    flex-direction: row; /* Align image and text in a row */
-    margin: 2rem;
+    justify-content: flex-start; /* Align items to the start (left) */
+    text-align: left; /* Align text to the left */
+    margin: 2rem auto;
+    max-width: 1200px; /* Optional: Limit the max width of the container */
 }
 
 .about-img {
-    width: 15rem; /* Larger image size */
-    height: 15rem; /* Adjust height to match */
-    margin-right: 2rem; /* Add some space below the image */
+    width: 25rem; /* Larger image size */
+    height: 25rem; /* Adjust height to match */
+    margin-right: 2rem; /* Space between image and text */
 }
 
 .about-img img {
@@ -173,8 +174,9 @@ nav {
 .about-info p {
     font-size: 1.3rem;
     margin: 0;
-    text-align: left;
+    max-width: 600px; /* Optional: Limit the width of the text for readability */
 }
+
 
 /* Logo (PS 70 Fall 2024) */
 .logo {
