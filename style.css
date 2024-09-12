@@ -39,13 +39,12 @@ a {
 header {
     background-color: #FFFFFF; /* White */
     border-bottom: 2px solid #00BFFF; 
-    background-color: E0F7FA;
     color: rgb(0, 0, 0);
     padding: 10px 0;
     position: fixed;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 nav {
@@ -280,8 +279,8 @@ footer {
 
 /* Image styling */
 .final-project-img {
-    width: 25rem; /* Adjust size as needed */
-    height: 35rem; /* Adjust size as needed */
+    width: 20rem; /* Adjust size as needed */
+    height: 20rem; /* Adjust size as needed */
     margin-right: 2rem; /* Space between image and text */
     display: flex;
     justify-content: center; /* Center the image horizontally */
@@ -298,24 +297,6 @@ footer {
     font-size: 1.3rem;
     margin: 0 2rem;
     text-align: justify;
-}
-
-.final-project button {
-    border: none;
-    outline: 0;
-    padding: 10px;
-    margin: 2rem;
-    font-size: 1rem;
-    color: white;
-    background-color: #00FFFF;
-    text-align: center;
-    cursor: pointer;
-    width: 15rem;
-    border-radius: 4px;
-}
-
-.final-project button:hover {
-    background-color: #1f9405;
 }
 
 /* Responsive design for final project section */
