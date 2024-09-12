@@ -10,18 +10,57 @@
             background-color: #E0F7FA; /* Even lighter blue background */
         }
 
-        .navbar {
-            background-color: #E0F7FA; /* Set navbar background to the lighter blue */
-        }
-
-        .navbar .nav-title {
-            background-color: #E0F7FA; /* Set the background of the h2 element to the lighter blue */
-        }
-
-        .container-fluid img {
+        header {
+            background-color: #FFFFFF; /* White */
+            border-bottom: 2px solid #87CEEB; 
+            color: rgb(0, 0, 0);
+            padding: 10px 0;
+            position: fixed;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px auto;
+            padding: 0 20px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            background-color: #E0F7FA;
+            border-radius: 4px;
+            color: white;
         }
 
         .image-link {
@@ -35,23 +74,29 @@
             display: block;
             margin-top: 10px;
         }
+
+        .container-fluid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark">
-        <div class="container-fluid">
-            <div class="flexrow">
-                <h2 class="nav-title">PS70 Fall 2024</h2>
+    <header>
+        <nav>
+            <div class="logo">
+              PS 70 Fall 2024
             </div>
-            <div class="navbar-nav">
-                <h4><a class="nav-link" href="./index.html">Home</a></h4>
-                <h4><a class="nav-link" href="./about.html">About</a></h4>
-                <h4><a class="nav-link" href="./13_finalproject/index.html">Final Project</a></h4>
-            </div>
-        </div>
-    </nav>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./13_finalproject/index.html">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container-fluid bg-3 text-center">
         <div class="row">
@@ -130,9 +175,12 @@
         </div>
     </div>
 
+    <footer>
+        <p>© 2024 PS 70. All Rights Reserved</p>
+    </footer>
+
 </body>
 
 </html>
-
 
 

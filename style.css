@@ -303,6 +303,78 @@ footer {
     }
 }
 
+/* Home Page Section */
+.home-page {
+    background-color: #E0F7FA; /* Light blue background for the home page */
+    padding: 100px 0 20px 0; /* Padding for top and bottom */
+}
+
+.home-page .navbar {
+    background-color: #E0F7FA; /* Navbar background color */
+}
+
+.home-page .container-fluid {
+    padding: 0; /* Remove default padding */
+}
+
+.home-page .container-fluid img {
+    width: 100%; /* Ensure images fit the container */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Cover the area of the image */
+}
+
+.home-page .image-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.home-page .image-link span {
+    display: block;
+    margin-top: 10px; /* Space between image and text */
+}
+
+.home-page .navbar-nav {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.home-page .nav-link {
+    border: 3px outset #a3a3a3;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: #a3a3a3;
+    color: #EEE7E8;
+    transition: 0.3s;
+}
+
+.home-page .nav-link:hover {
+    border: 3px outset #FFFFFF;
+    background-color: #a3a3a3;
+    transition: 0.3s;
+}
+
+.home-page .nav-title {
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #000000;
+    background-color: #E0F7FA; /* Navbar background color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-page .navbar-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .home-page .container-fluid img {
+        height: auto; /* Adjust image height for smaller screens */
+    }
+}
+
 
 
 
