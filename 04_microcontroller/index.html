@@ -118,7 +118,7 @@ Here was the first result of uploading this code to the Arduino: </p>
 <p> What this code does is in the `loop()` function, it lights up one pixel at a time in green, waits for half a second, and then moves to the next pixel. Essentially, what we expect to see is the green light moving from bottom to top, one circle at a time; once it gets to the top, it starts again from the bottom. </p>
 
 <video controls width = "500px">
-  <source src = "./IMG_9058.MP4" type = "video/mp4">
+  <source src = "./IMG_9058.mp4" type = "video/mp4">
 </video>
 
 <p> I then wanted to experiment with changing different elements of the code and seeing how this would impact my light display. I commented out stick.clear(). 
@@ -126,13 +126,13 @@ Here was the first result of uploading this code to the Arduino: </p>
 Starting with the bottom circle, each circle turns green in order (from bottom to top). However, it stays green until all of the circles are green and then stays like this forever. The reason this happens is because stick.clear() is supposed to turn the light off. If we comment it out, all of the lights stay on forever once they are turned on. </p>
 
 <video controls width = "500px">
-  <source src = "./IMG_9061.MP4" type = "video/mp4">
+  <source src = "./IMG_9061.mp4" type = "video/mp4">
 </video>
 
 <p> I then wanted to figure out how to change the direction of the sequential lighting. To do this, I changed the initial value of curPixel to 7 instead of 0 so it starts at the top. Then, I changed the increment of curPixel++ to curPixel- - so that it moves down. Finally, I changed the for loop to say that if curPixel < 0, then curPixel = 7 ; this means that once it gets to the bottom, it should start again from the top. </p>
 
 [<video controls width = "500px">
-  <source src = "./IMG_9064.MP4" type = "video/mp4">
+  <source src = "./IMG_9064.mp4" type = "video/mp4">
 </video>
 
 <p> The final aspect of Neopixel control I wanted to experiment with was controlling the amount of pixels that were lit up. To do this, I wrote the following code. </p>
@@ -154,7 +154,7 @@ Starting with the bottom circle, each circle turns green in order (from bottom t
 <p>I then set byte numberToDisplay = 0 instead of 170 before the loop. Then, in the loop, in showBinary, I put numberToDisplay ++ so that it counted up each time.</p>
 
 <video controls width = "500px">
-  <source src = "./IMG_9068.MP4" type = "video/mp4">
+  <source src = "./IMG_9068.mp4" type = "video/mp4">
 </video>
 
 <p> Once I found that I had a pretty good grasp of how to control and manipulate the Neopixel through my Arduino code, I felt confident about setting off on my mission to control the neopixel with an ultrasonic distance sensor! </p>
@@ -178,7 +178,7 @@ Starting with the bottom circle, each circle turns green in order (from bottom t
 After uploading this code, I was able to visually represent distance measurements using my Neopixel, with each lit LED corresponding to a specific range of distances! </p>
 
 <video controls width = "500px">
-  <source src = "./IMG_9088.MP4" type = "video/mp4">
+  <source src = "./IMG_9088.mp4" type = "video/mp4">
 </video>
 
 </div>
