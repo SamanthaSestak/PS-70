@@ -9,8 +9,14 @@
     <style>
         /* Ensure consistent size for all images and videos */
         img, video {
-            width: 300px; /* Smaller and consistent size */
+            width: 500px; /* Slightly larger size */
             height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Add some space above images and videos */
+        }
+
+        /* Add margin for breaks between sections */
+        p, h3, h4, h5 {
+            margin-bottom: 20px;
         }
     </style>
     <title>PS70: Intro to Digital Fabrication</title>
@@ -72,7 +78,7 @@
 
             <p> This process taught me a lot about the nuances of 3D printing, from adjusting design elements in Fusion to fine-tuning the slicer settings for optimal print quality. I’m excited to continue experimenting with 3D printing to continue creating cool models! </p>
 
-            <h5>Part 2: 3D Scanning</h5>
+            <h4>Part 2: 3D Scanning</h4>
             <p>This Tuesday, October 8, one of my favorite soccer players of all time, Andrés Iniesta, retired. To honor his storied career, I decided to scan the toy figure I have of him using photogrammetry. It felt like a fitting tribute to one of the greatest midfielders ever.</p>
 
             <img src="IMG_9150.jpg" alt="Iniesta Toy" class="img-fluid">
@@ -83,32 +89,34 @@
 
             To fix this, I placed the camera directly above the toy and recorded a second video focused solely on the top of the head. After extracting the frames from this video, I fused them with the original scan to fill in the missing parts. The photogrammetry software blended both datasets, resulting in a complete, highly detailed 3D model of Andrés Iniesta. Here is a video of the scan on the software before I cut off the extra pieces: </p>
 
-            <video controls>
-                <source src="./IMG_9128.mp4" type="video/mp4">
-            </video>
-
-            <p>This is what the scan looked like after I made those cuts:</p>
-
-            <img src="IMG_9129.jpg" alt="Iniesta Scan" class="img-fluid">
-
-            <p>Here is the scan imported into PrusaSlicer:</p>
-
-            <video controls>
-                <source src="./IniestaScanPrusa.mp4" type="video/mp4">
-            </video>
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <video controls>
+                        <source src="./IMG_9128.mp4" type="video/mp4">
+                        </video>
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9129.jpg" alt="Iniesta Scan" class="img-fluid">
+                </div>
+                <div style="display: inline-block;">
+                    <video controls>
+                        <source src="./IniestaScanPrusa.mp4" type="video/mp4">
+                        </video>
+                </div>
+            </div>
 
             <p>The final product came out better and more detailed than I expected, and the process taught me a lot about refining scans to capture hard-to-reach details.</p>
 
-            <h5>Part 3: Final Project 3D Model</h5>
+            <h4>Part 3: Final Project 3D Model</h4>
 
             <p> The final aspect of this week's assignment was to begin a 3D model for your final project. One of the ideas I've been really interested in and that I also thought would be easiest to 3D model is a spiderman web shooter. Below you can see the top and the bottom of the web shooter exported into PrusaSlicer. </p>
 
             <div style="text-align: center;">
                 <div style="display: inline-block;">
-                    <img src="Top.jpg" alt="top of web shooter" class="img-fluid" style="max-width: 300px; margin-right: 10px;">
+                    <img src="Top.jpg" alt="top of web shooter" class="img-fluid" style="max-width: 500px; margin-right: 10px;">
                 </div>
                 <div style="display: inline-block;">
-                    <img src="Bottom.jpg" alt="bottom of web shooter" class="img-fluid" style="max-width: 300px;">
+                    <img src="Bottom.jpg" alt="bottom of web shooter" class="img-fluid" style="max-width: 500px;">
                 </div>
             </div>
 
@@ -127,5 +135,6 @@
 </body>
 
 </html>
+
 
 
