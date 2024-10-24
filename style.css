@@ -366,9 +366,9 @@ li {
     line-height: 1.2; /* Adjust line height for a tighter layout */
 }
 
-/* Global Styles for the Home Page remain unchanged */
+<body class="week7">
 
-<body class= "week7"
+/* Global Styles for the Home Page remain unchanged */
 
 /* Week 7 Specific Styles */
 .week7 img, .week7 video {
@@ -386,4 +386,3 @@ li {
 }
 
 /* Other week-specific rules can go here */
-
