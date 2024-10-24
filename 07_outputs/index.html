@@ -91,6 +91,8 @@
             <p>Using the provided code as a foundation, I modified it to calculate and display acceleration values on the OLED. Initially, the output was not as expected—it displayed X, Y, and Z values corresponding to angular motion, which only changed when tilting the sensor.</p>
             <p>However, my goal was to track acceleration when moving the sensor horizontally or vertically, and then use that to calculate the force. To achieve this, I switched to a simpler Arduino library—Adafruit MPU6050—and used the MPU_oled example as a base. I updated the OLED parameters and added a calculation for force using the formula `force = mass * acceleration`, setting the mass to an arbitrary value of 1.0 for proof of concept. In future iterations, I will put more thought into an accurate value for the mass. This worked as intended, and I observed the expected results on the OLED. Below is the updated Arduino code:</p>
 
+            <iframe src="https://app.arduino.cc/sketches/8ad0da28-5f45-45e6-8a64-ceda8f57c4b5?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
 
             <h4>Understanding the Data</h4>
 
