@@ -1,40 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<title>PS70: Intro to Digital Fabrication </title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure consistent size for all images and videos */
+        img, video {
+            width: 500px; /* Slightly larger size */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Add space above images and videos */
+        }
 
+        /* Add margin for breaks between sections */
+        p, h3, h4, h5 {
+            margin-bottom: 20px; /* Adds space below paragraphs and headings */
+        }
 
-<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
-  <div style="align-items: center; justify-content: center;" class="container-fluid">
-    <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
-    </div>
-    <div class="navbar-nav">
-      <h4><a class="nav-link" href="../index.html">Home</a></h4>
-      <h4><a class="nav-link" href="../about.html">About</a></h4>
-    </div>
-  </div>
-</nav>
+        /* Add space above and below specific elements */
+        img, video {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>PS70: Intro to Digital Fabrication</title>
+</head>
 
 <body>
-<xmp style="display:none;">
-<div class="textcontainer">
-<p class="margin">   </p>
+    <header>
+        <nav>
+            <div class="logo">
+                PS 70 Fall 2024
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="#">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<h3>Week 7: Electronic Outputs</h3>
+    <section class="final-project">
+        <div class="container mt-4">
+            <h2>Week 7: Electronic Outputs</h2>
+
+            <h3>Assignment: Minimum Viable Product for Final Project</h3>
+
+            <h4>Final Project Overview</h4>
+
+            <p>For my final project, I aim to develop a smart sports system that monitors key characteristics like the angle, spin, speed, and impact force of a soccer ball kick. Having access to this information in real-time would be beneficial for players to track and improve their technique over time. I'm still deciding on the best way to integrate the electronics. My current options include embedding them in a cleat, a 3D-printed soccer ball, or even goalkeeping gloves. For instance, pressure-sensitive gloves could provide useful data on grip strength and ball-catching techniques.</p>
+
+            <h4>Minimum Viable Product (MVP) Task</h4>
+
+            <p>Given the scope of my project, my priority this week was to focus on tracking force and acceleration. After consulting with Nathan, I concluded that using an accelerometer and gyroscope would be the best approach. I found an MPU-6050 sensor in the makerspace, so my goal was to display its values on an OLED screen.</p>
+
+            <h4>MVP Assembly</h4>
+
+            <h5>Bill of Materials</h5>
+            <ul>
+                <li>ESP32</li>
+                <li>2x Breadboard</li>
+                <li>OLED Display</li>
+                <li>MPU6050 Accelerometer and Gyroscope</li>
+            </ul>
+
+            <p></p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="ESP32Pinout.jpg" alt="esp32 pinout" class="img-fluid" style="max-width: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="OLED Pinout.jpg" alt="oled pinout" class="img-fluid" style="max-width: 500px;">
+                </div>
+            </div>
+
+            <p>Using the above pinout diagrams, I constructed the circuit:</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="MPUCircuit1.jpg" alt="circuit orientation 1" class="img-fluid" style="max-width: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="MPUCircuit2.jpg" alt="circuit orientation 2" class="img-fluid" style="max-width: 500px;">
+                </div>
+            </div>
+
+            <h4>Writing Code</h4>
+
+            <p>For my initial code, I referenced <a href="https://nathanmelenbrink.github.io/ps70/08_output/index.html ">Week 7: Electronic Output Devices on the PS70 website</a> for the OLED code and consulted a <a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/ ">tutorial for setting up the ESP32 Dev Boards with Arduino.</a></p>
+            <p>Using the provided code as a foundation, I modified it to calculate and display acceleration values on the OLED. Initially, the output was not as expected—it displayed X, Y, and Z values corresponding to angular motion, which only changed when tilting the sensor.</p>
+            <p>However, my goal was to track acceleration when moving the sensor horizontally or vertically, and then use that to calculate the force. To achieve this, I switched to a simpler Arduino library—Adafruit MPU6050—and used the MPU_oled example as a base. I updated the OLED parameters and added a calculation for force using the formula `force = mass * acceleration`, setting the mass to an arbitrary value of 1.0 for proof of concept. In future iterations, I will put more thought into an accurate value for the mass. This worked as intended, and I observed the expected results on the OLED. Below is the updated Arduino code:</p>
 
 
+            <h4>Understanding the Data</h4>
 
-<h4>Assignment: Minimum Viable Product for Final Project</h4>
+            <p>At first, I didn't understand what I was looking at on the display and so I did some research on <a href = "https://www.instructables.com/Accelerometer-MPU-6050-Communication-With-AVR-MCU/">this site</a>.The accelerometer measures the change in velocity or acceleration along the X, Y, and Z axes in meters per second squared (m/s²). For example, when the sensor is stationary, the Z-axis shows a value close to 9.8 m/s² due to the force of gravity. As I move the sensor along a specific axis, either up or down or side to side, the values adjust accordingly.</p>
+            <p>The gyroscope tracks the rotational speed around the X, Y, and Z axes in radians per second (rps), reflecting how fast the device is rotating about each axis.</p>
+
+            <h4>Video Demonstration</h4>
+
+            <p>These three videos demonstrate the acceleration and force values changing when I move the sensor along the three different axes. </p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block; width: 200px; height: 200px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./XAxis.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div style="display: inline-block; width: 200px; height: 200px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./YAxis.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div style="display: inline-block; width: 200px; height: 200px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./ZAxis.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <h4>Final Project 3D Model</h4>
+
+            <h4>Next Steps</h4>
+
+            <p>I noticed that my display values would keep getting stuck after moving the sensor back and forth quickly a few times. Below is an example of the screen when it got stuck:</p>
+
+            <img src="Stuck.jpg" alt="stuck display" class="img-fluid">
+
+            <p>This could be attributed to the connections in the breadboard not being stable enough. After shaking the board enough times, they would come undone.</p>
+
+            <p>Based on this, I know that going forward I need to work on soldering these connections in place so that the circuit runs more continuously. I also need to work on miniaturizing this circuitry into a protoboard that can eventually fit within my device in whatever form it takes whether it be a shoe, goalie glove, or ball.</p>
+
+            <h4></h4>
+
+            <p>I wanted to analyze the clock signal of the SSD1306 OLED display using an oscilloscope and determine if the device operates on a fixed clock, as well as measure the clock speed.</p>
+
+            <p>To monitor the clock signal, an oscilloscope probe was connected to the SCL pin, and the ground probe was connected to a suitable ground point in the circuit. </p>
+
+            <ul>
+                <li>The oscilloscope was configured to capture the clock signal by setting the appropriate time division to observe the square wave pattern generated on the SCL line.</li>
+                <li>The signal was analyzed to measure the period between rising or falling edges of the square wave, allowing me to calculate the clock frequency.</li>
+                <li>The I2C clock signal was monitored for consistency, ensuring it operated on a fixed frequency.</li>
+            </ul>
+
+            <h5>Findings</h5>
+
+            <p>Upon connecting the oscilloscope to the SSD1306’s SCL pin, a consistent square wave signal was observed. This signal corresponds to the clock pulse that synchronizes data transmission between the Arduino and the display. The measured period of the square wave revealed a clock frequency of approximately 400 kHz, which is at the higher end of the standard I2C speed range.</p>
+
+            <h5>Clock Type</h5>
+
+            <p>The SSD1306 operates on a fixed clock, as the square wave frequency remained stable throughout the observation. This means the communication speed is not dynamic but remains consistent during normal operation.</p>
+
+            <h5>Clock Speed</h5>
+
+            <p>The clock signal frequency was measured at 400 kHz, indicating the display is utilizing Fast Mode I2C communication.</p>
 
 
-</div>
-</xmp>
-</body>
+            <video controls>
+                <source src="./ThorHammerPrusaVideo.mp4" type="video/mp4">
+            </video>
 
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+            <img src="PutTogetherModel.jpg" alt="complete web shooter" class="img-fluid">
 
-</html>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-3">
+        <p>© 2024 PS 70
+
