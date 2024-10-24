@@ -368,16 +368,38 @@ li {
 
 /* Week 7 Specific Styles */
 .week7 img, .week7 video {
-    width: 500px;
+    width: 500px; /* Set width for images and videos in Week 7 pages */
     height: auto;
     display: block;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; /* Center images and videos */
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .week7 p {
-    text-align: left;
+    text-align: left; /* Ensure text remains left-aligned on Week 7 pages */
+    font-size: 18px; /* Increase font size of paragraphs */
 }
+
+.week7 h2, .week7 h3, .week7 h4, .week7 h5 {
+    font-size: 1.5em; /* Increase font size for headings */
+}
+
+.week7 h2 {
+    font-size: 2.2em; /* Make h2 headings larger */
+}
+
+.week7 h3 {
+    font-size: 1.8em; /* Make h3 headings larger */
+}
+
+.week7 h4 {
+    font-size: 1.6em; /* Make h4 headings larger */
+}
+
+.week7 h5 {
+    font-size: 1.4em; /* Make h5 headings larger */
+}
+
 
