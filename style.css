@@ -20,6 +20,7 @@ body {
 
 p {
     font-size: 16px;
+    text-align: left; /* Ensure paragraphs are left-aligned */
 }
 
 .margin {
@@ -145,6 +146,7 @@ nav {
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: left; /* Ensure text is left-aligned */
 }
 
 /* Flexbox container for image and text */
@@ -178,7 +180,6 @@ nav {
     margin: 0 2rem;
     text-align: justify;
 }
-
 
 @media (max-width: 768px) {
     nav {
@@ -226,6 +227,7 @@ nav {
         width: 10rem;
     }
 }
+
 button {
     border: none;
     outline: 0;
@@ -277,11 +279,14 @@ footer {
     text-align: left; /* Align text to the left */
 }
 
-.project img {
-    width: 100%; /* Ensure image takes full width of its container */
+.project img, .project video {
+    width: 100%; /* Ensure image/video takes full width of its container */
     height: auto; /* Maintain aspect ratio */
     border-radius: 5px;
-    margin-bottom: 1rem; /* Space between image and text */
+    margin-bottom: 1rem; /* Space between image/video and text */
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Center the image/video */
 }
 
 .project h4 {
@@ -306,11 +311,6 @@ footer {
     }
 }
 
-
-
-
-
-
 /* Home Page Section */
 .container-fluid.bg-3 {
     background: linear-gradient(360deg, #E0F7FA 0%, #E0F7FA 100%);
@@ -326,42 +326,4 @@ footer {
     background-color: #FFFFFF; /* White background for box */
     border: 1px solid #E0F7FA; /* Light blue border matching the background */
     border-radius: 5px;
-    padding: 10px; /* Padding around the image and text */
-    margin-bottom: 30px; /* Space between rows */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    max-width: 300px; /* Fixed width for consistency */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-}
-
-.image-link img {
-    width: 100%; /* Ensure image takes full width of its container */
-    height: 200px; /* Fixed height for consistency */
-    object-fit: cover; /* Ensure image covers the container without stretching */
-    border-radius: 5px;
-}
-
-.image-link span {
-    display: block;
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: #323030; /* Dark text color for captions */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .col-sm-4 {
-        flex: 1 0 100%; /* Stack items on smaller screens */
-        max-width: 100%; /* Full width on smaller screens */
-    }
-}
-
-ul {
-    margin-left: 20px; /* Adjust the left margin for indentation */
-    padding-left: 0; /* Remove padding to reduce space between bullets and text */
-}
-
-li {
-    margin-bottom: 5px; /* Adjust space between list items */
-    line-height: 1.2; /* Adjust line height for a tighter layout */
-}
+    padding: 10px;
