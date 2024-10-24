@@ -59,31 +59,32 @@
             <h4>MVP Assembly</h4>
 
             <h5>Bill of Materials</h5>
-            <p>ESP32</p>
-            <p>2x Breadboard</p>
-            <p>OLED Display</p>
-            <p>MPU6050 Accelerometer and Gyroscope</p>
+            <p>1. ESP32</p>
+            <p>2. 2x Breadboard</p>
+            <p>3. OLED Display</p>
+            <p>4. MPU6050 Accelerometer and Gyroscope</p>
 
             <div style="text-align: center;">
                 <div style="display: inline-block;">
-                    <img src="ESP32 Pinout.jpg" alt="esp32 pinout" class="img-fluid" style="width: 500px; margin-right: 10px;">
+                    <img src="ESP32 Pinout.jpg" alt="esp32 pinout" class="img-fluid" style="width: 500px; height: 300px; margin-right: 10px;">
                 </div>
                 <div style="display: inline-block;">
-                    <img src="OLED Pinout.jpg" alt="oled pinout" class="img-fluid" style="width: 500px;">
+                    <img src="OLED Pinout.jpg" alt="oled pinout" class="img-fluid" style="width: 500px; height: 300px;">
                 </div>
             </div>
 
 
-            <p>Using the above pinout diagrams, I constructed the circuit:</p>
+            <p>Using the above pinout diagrams, I constructed the following circuit:</p>
 
             <div style="text-align: center;">
                 <div style="display: inline-block;">
-                    <img src="MPUCircuit1.jpg" alt="circuit orientation 1" class="img-fluid" style="width: 500px; margin-right: 10px;">
+                    <img src="MPUCircuit1.jpg" alt="circuit orientation 1" class="img-fluid" style="width: 500px; height: 300px; margin-right: 10px;">
                 </div>
                 <div style="display: inline-block;">
-                    <img src="MPUCircuit2.jpg" alt="circuit orientation 2" class="img-fluid" style="width: 500px;">
+                    <img src="MPUCircuit2.jpg" alt="circuit orientation 2" class="img-fluid" style="width: 500px; height: 300px;">
                 </div>
             </div>
+
 
             <h4>Writing Code</h4>
 
@@ -125,13 +126,9 @@
 
             <h4>Next Steps</h4>
 
-            <p>I noticed that my display values would keep getting stuck after moving the sensor back and forth quickly a few times. Below is an example of the screen when it got stuck:</p>
+            <p>I noticed that my display values would keep getting stuck after moving the sensor back and forth quickly a few times. Below is an example of the screen when it got stuck. This could be attributed to the connections in the breadboard not being stable enough. After shaking the board enough times, they would come undone. ased on this, I know that going forward I need to work on soldering these connections in place so that the circuit runs more continuously. I also need to work on miniaturizing this circuitry into a protoboard that can eventually fit within my device in whatever form it takes whether it be a shoe, goalie glove, or ball. </p>
 
-            <img src="Stuck.jpg" alt="stuck display" class="img-fluid">
-
-            <p>This could be attributed to the connections in the breadboard not being stable enough. After shaking the board enough times, they would come undone.</p>
-
-            <p>Based on this, I know that going forward I need to work on soldering these connections in place so that the circuit runs more continuously. I also need to work on miniaturizing this circuitry into a protoboard that can eventually fit within my device in whatever form it takes whether it be a shoe, goalie glove, or ball.</p>
+            <img src="Stuck.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
             <h4>Device Time Domain</h4>
 
