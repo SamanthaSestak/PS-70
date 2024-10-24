@@ -366,23 +366,18 @@ li {
     line-height: 1.2; /* Adjust line height for a tighter layout */
 }
 
-<body class="week7">
-
-/* Global Styles for the Home Page remain unchanged */
-
 /* Week 7 Specific Styles */
 .week7 img, .week7 video {
-    width: 500px; /* Set width for images and videos in Week 7 pages */
+    width: 500px;
     height: auto;
     display: block;
     margin-left: auto;
-    margin-right: auto; /* Center images and videos */
+    margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .week7 p {
-    text-align: left; /* Ensure text remains left-aligned on Week 7 pages */
+    text-align: left;
 }
 
-/* Other week-specific rules can go here */
