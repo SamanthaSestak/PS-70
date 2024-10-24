@@ -145,13 +145,9 @@
                 <li>The I2C clock signal was monitored for consistency, ensuring it operated on a fixed frequency.</li>
             </ul>
 
-            <h5>Findings</h5>
-
-            <p>Upon connecting the oscilloscope to the SSD1306’s SCL pin, a consistent square wave signal was observed. This signal corresponds to the clock pulse that synchronizes data transmission between the Arduino and the display. The measured period of the square wave revealed a clock frequency of approximately 400 kHz, which is at the higher end of the standard I2C speed range.</p>
-
             <h5>Clock Type</h5>
 
-            <p>The SSD1306 operates on a fixed clock, as the square wave frequency remained stable throughout the observation. This means the communication speed is not dynamic but remains consistent during normal operation.</p>
+            <p>Upon connecting the oscilloscope to the SSD1306’s SCL pin, a consistent square wave signal was observed. This signal corresponds to the clock pulse that synchronizes data transmission between the Arduino and the display. Therefore, the SSD1306 operates on a fixed clock. </p>
 
             <h5>Clock Speed</h5>
 
