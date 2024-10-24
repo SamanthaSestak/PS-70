@@ -379,7 +379,7 @@ li {
 
 .week7 p {
     text-align: left; /* Ensure text remains left-aligned on Week 7 pages */
-    font-size: 18px; /* Increase font size of paragraphs */
+    font-size: 20px; /* Increase font size of paragraphs */
 }
 
 .week7 h2, .week7 h3, .week7 h4, .week7 h5 {
