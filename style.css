@@ -355,3 +355,13 @@ footer {
         max-width: 100%; /* Full width on smaller screens */
     }
 }
+
+ul {
+    margin-left: 20px; /* Adjust the left margin for indentation */
+    padding-left: 0; /* Remove padding to reduce space between bullets and text */
+}
+
+li {
+    margin-bottom: 5px; /* Adjust space between list items */
+    line-height: 1.2; /* Adjust line height for a tighter layout */
+}
