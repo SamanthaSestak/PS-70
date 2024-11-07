@@ -1,48 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<title>PS70: Intro to Digital Fabrication </title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure consistent size for all images and videos */
+        img, video {
+            width: 500px; /* Slightly larger size */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Add space above images and videos */
+        }
+
+        /* Add margin for breaks between sections */
+        p, h3, h4, h5 {
+            margin-bottom: 20px; /* Adds space below paragraphs and headings */
+        }
+
+        /* Add space above and below specific elements */
+        img, video {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>PS70: Intro to Digital Fabrication</title>
+</head>
+
+<body class="week7">
+    <header>
+        <nav>
+            <div class="logo">
+                PS 70 Fall 2024
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="#">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="final-project">
+        <div class="container mt-4">
+            <h2>Week 9: Radio, Wifi, Bluetooth (IoT)</h2>
+
+            <h3>Take 1: Calendar Chaos</h3>
+
+            <p>Our initial goal was to create a circuit that could sync with events from Google Calendar. Specifically, we wanted the circuit to activate a buzzer and display event details on an LCD screen at the scheduled time of each event. To achieve this, we planned to extract event data from the   <a href="https://developers.google.com/calendar/api/v3/reference/events/get">Google Calendar API</a> and use it to trigger the hardware.</p>
+
+            <p>Setting up the Google Calendar API, however, proved to be a complex and time-consuming process. We began by navigating to the Google Cloud Developer Console to create a new project, which involved multiple steps to enable the API and configure OAuth 2.0 credentials. This setup required us to establish permissions and obtain a client ID and API key. Initially, we attempted to use the API key according to the documentation, but we encountered persistent browser errors that blocked us from making successful requests.</p>
+
+            <p>Next, we tried switching to an OAuth 2.0 access token, hoping it would solve the issue. However, obtaining a valid access token proved equally challenging, as our requests repeatedly returned the error: “Request is missing required authentication credential. Expected OAuth 2 access token, login cookie, or other valid authentication credential.” Despite following the setup instructions carefully, these authentication requirements became a persistent roadblock.</p>
+
+            <p>Ultimately, the complexity of the Google Calendar API’s authentication protocols and error-prone setup led us to reassess. To avoid further delays, we decided to switch to a different API that was more straightforward to implement, allowing us to focus on the functionality of our project rather than struggling with configuration issues.</p>
+
+            <h3>Take 2: Cat-tasrophe in Data</h3>
+
+            <p>We then explored using the <a href="https://cat-fact.herokuapp.com/#/cat/facts">Cat Facts API</a> to test a simpler data retrieval process. With this API, we successfully extracted and displayed data on the Arduino serial monitor, pulling various cat facts from the API. While some of the facts were amusing and informative, like “cats can taste different flavors of water,” many entries were corrupted and displayed as nonsensical strings, such as “jbghsshahsh.” Due to this inconsistency in data quality, we decided to seek out a more reliable API.</p>
+
+            <h3>Take 3: Pokémon to the Rescue!</h3>
+
+            <p>This brought us to our final choice: the <a href="https://pokeapi.co/docs/v2#google_vignette"> Pokémon API!</a> We found an API that provided detailed information on all 1,025 Pokémon characters, which suited our goal of displaying data consistently.</p>
+
+            <p>Our plan was to retrieve and display Pokémon names from the API on our LCD screen. Additionally, we wanted to integrate a button that would allow users to cycle through different Pokémon names with each press. To add a visual cue, we connected an LED to the button, so each press would trigger the LED to turn on or off, indicating a switch to the next Pokémon name on the display. This API allowed us to achieve both a stable data source and interactive functionality for our project!</p>
+
+            <h3>Finalizing Our Code</h3>
+
+            <p>To start, we focused on getting our Arduino to output Pokémon names from the API. Initially, we encountered a problem with deserializing JSON data. Specifically, we kept seeing the error "Fixing error IncompleteInput," which occurs when `deserializeJson()` and `deserializeMsgPack()` attempt to read from a stream but encounter a timeout. We initially thought increasing the Serial Timeout value would help, but this didn’t resolve the issue.</p>
+
+            <p>After investigating further, we realized that the API response contained too much data for the code to handle efficiently. To streamline the data, we examined the API structure and found that the Pokémon names were specifically located in the “forms” field of the JSON object. By targeting only this field, we were able to significantly reduce the data load, allowing our code to process it successfully.</p>
+
+            <p>Our initial API request, which included excessive information: `https://pokeapi.co/api/v2/pokemon/{id or name}/`</p>
+
+            <p>The streamlined API request targeting the “forms” field for names only: `https://pokeapi.co/api/v2/pokemon-form/{id or name}/`</p>
+
+            <p>After making this change, our code successfully outputted Pokémon names from the API! However, this output still required a specific integer input to fetch a specific Pokémon. For instance, inputting “1” returned “bulbasaur.” Since we wanted the names to appear randomly and continuously, we used the `random()` function to generate numbers within the range of available Pokémon. We coded this with `String(random(1025))` to fetch random Pokémon names.</p>
+
+            <p>Once random Pokémon names were outputted to our serial monitor, we moved on to display them on the LCD. We also added code to integrate the button and LED, so each button press would toggle the LED and display a new Pokémon name on the LCD.</p>
+
+            <p>Here is the final code:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/07d426c2-9cc6-46fe-b4f6-d9997e69fb72?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <h3>Circuit Construction</h3>
+
+            <p>Next, we began wiring our circuit!</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="Pinout1.jpg" alt="esp32 pinout" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="Pinout2.jpg" alt="oled pinout" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <p>Combining the two pinouts above, we built our final circuit:</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="CircuitPhoto1.jpg" alt="esp32 pinout" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="CircuitPhoto2.jpg" alt="oled pinout" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <h3>Final Result: Pokémon Display</h3>
+
+            <p>With the code uploaded, the circuit was fully operational: the LCD communicated with the microcontroller to retrieve and display data from the Pokémon API, and the button press controlled both the LED and the displayed Pokémon name. Each time we pressed the button, the LED toggled on or off, and the LCD showed a new Pokémon name, exactly as intended!</p>
+
+            <p>Here is a video showcasing this final result:</p>
+
+            <video controls>
+                <source src="./PokeFinalVideo.mp4" type="video/mp4">
+            </video>
 
 
-<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
-  <div style="align-items: center; justify-content: center;" class="container-fluid">
-    <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
-    </div>
-    <div class="navbar-nav">
-      <h4><a class="nav-link" href="../index.html">Home</a></h4>
-      <h4><a class="nav-link" href="../about.html">About</a></h4>
-    </div>
-  </div>
-</nav>
+        </div>
+    </section>
 
-<body>
-<xmp style="display:none;">
-<div class="textcontainer">
-<p class="margin">   </p>
+    <footer class="bg-dark text-light text-center py-3">
+        <p>© 2024 PS 70
+    </footer>
 
-<h3>Week 9: Radio, WiFi, Bluetooth (IoT)</h3>
-
-
-<p class="margin">   </p>
-<div class="flexrow">
-  <a id="btn" href="wk9.zip" download>Download my files from this week!
-  </a>
-</div>
-<p class="margin">   </p>
-
-<h4>Assignment: [Program something with IOT]</h4>
-
-
-
-
-</div>
-</xmp>
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
-</html>
