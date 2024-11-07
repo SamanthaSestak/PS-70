@@ -68,7 +68,7 @@
 
             <h3>Finalizing Our Code</h3>
 
-            <p>To start, we focused on getting our Arduino to output Pokémon names from the API. Initially, we encountered a problem with deserializing JSON data. Specifically, we kept seeing the error "Fixing error IncompleteInput," which occurs when `deserializeJson()` and `deserializeMsgPack()` attempt to read from a stream but encounter a timeout. We initially thought increasing the Serial Timeout value would help, but this didn’t resolve the issue.</p>
+            <p>To start, we focused on getting our Arduino code to output Pokémon names from the API. Initially, we encountered a problem with deserializing JSON data. Specifically, we kept seeing the error "Fixing error IncompleteInput," which occurs when `deserializeJson()` and `deserializeMsgPack()` attempt to read from a stream but encounter a timeout. We initially thought increasing the Serial Timeout value would help, but this didn’t resolve the issue.</p>
 
             <p>After investigating further, we realized that the API response contained too much data for the code to handle efficiently. To streamline the data, we examined the API structure and found that the Pokémon names were specifically located in the “forms” field of the JSON object. By targeting only this field, we were able to significantly reduce the data load, allowing our code to process it successfully.</p>
 
