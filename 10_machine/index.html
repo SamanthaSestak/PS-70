@@ -48,11 +48,11 @@
 
             <h3>Pipe Robot: Locomotion Team</h3>
 
-            <p> Our team was tasked with figuring out the locomotion aspect of the pipe robot.</p>
+            <p> Our team was responsible for the locomotion of the pipe robot, which involved designing its overall structure, integrating the servo and stepper motors for movement, and developing the drive system to ensure it could move forward and turn effectively. </p>
 
             <h4>Step 1: Stepper Motor Activation</h4>
 
-            <p>To begin prototyping, we first worked on just trying to get a stepper motor to move. To do this, we built the following circuit:</p>
+            <p>Before developing our rough prototype, we began with the most basic aspect of the design: getting the stepper motor to move. To achieve this, we built the following circuit:</p>
 
             <div style="text-align: center;">
                 <div style="display: inline-block;">
@@ -63,17 +63,19 @@
                 </div>
             </div>
 
-            Here is a video of the stepper motor rotating:
+            <p>The correct code is displayed below: </p>
+
+            <p>Here is a video of the stepper motor rotating after uploading the code:</p>
 
             <video controls>
                 <source src="./IMG_9644.mp4" type="video/mp4">
             </video>
 
-            <h4>Step 2: Early Lego Prototyping</h4>
+            <h4>Step 2: Rough Prototyping with Legos</h4>
 
             <p>We then used legos to start doing some very rough prototyping with our rotating steppor motor. We used a heat gun to attach lego wheels onto our motor to analyze its motion.</p>
 
-            <p>Then, using the legos, we started experimenting with different designs. We liked the idea of using a gear system with a front and back axle to rotate the wheels. We experimented with several different orientations of this system:</p>
+            <p>Then, using the legos, we started experimenting with different design options. We liked the idea of using a gear system with a front and back axle to rotate the wheels. We experimented with several different orientations of this gear syste below:</p>
 
             <div style="text-align: center;">
                 <div style="display: inline-block; width: 300px; height: 300px;">
@@ -93,13 +95,11 @@
                 </div>
             </div>
 
-            <p>We then settled on what we believed this system should look like and captured an image:</p>
+            <p>We settled on what we believed was the most efficient system and captured an image of it:</p>
 
             <img src="IMG_9652.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-            <h4>Step 3: Developing Rough Prototype</h4>
-
-            <p>When we reconvened, we began doing a rough prototype to simulate the motion. In this iteration, we wanted to mostly pay attention to housing our different components in an economical way. When everything was taped together, our prototype looked like this:</p>
+            <p>We began building a rough prototype as a proof of concept of our motion. In this iteration, we wanted to mostly pay attention to housing our different components in an economical way. When everything was taped together, our rough prototype looked like this:</p>
 
             <video controls>
                 <source src="./IMG_9710.mp4" type="video/mp4">
@@ -111,9 +111,11 @@
                 <source src="./IMG_9715.mp4" type="video/mp4">
             </video>
 
-            <h4>Step 4: Servo Activation</h4>
+            <h4>Step 3: Servo Activation</h4>
 
-            <p>With the remaining time we had, we also constructed a quick circuit to get the servo moving so that we could incorporate the front two wheel design into our system.</p>
+            <p>With the remaining time we had, we also constructed a quick circuit to get the servo moving so that we could now incorporate the front wheels into our design.</p>
+
+            <p>The code for the servo can be accessed below:</p>
 
             <p>Here is a video of the servo in action:</p>
 
@@ -123,7 +125,45 @@
 
             <h4>Next Steps</h4>
 
-            <p>Going forward, we need to more effectively secure all of our pieces together and work on integrating our design with the snakehead team to accommodate the servo. We also need to begin 3D printing or laser cutting pieces to house the different components and secure them together more reliably. With this, we should accomplish a more polished prototype. </p>
+            <p>Going forward, we need to more effectively secure all of our pieces together in a more streamlined prototype and work on integrating our design with the snakehead team to accommodate the servo. We also need to begin 3D printing pieces to warehouse the different components and secure them together more reliably. With this, we should accomplish a more polished prototype. </p>
+
+            <h4>Final Prototype Iteration I </h4>
+
+            <p>When our team reconvened, we spent time sketching our final design. Pictured below are several sketches of our first idea.</p>
+
+            <p>Based on these sketches, we began 3D printing several pieces. The first part we printed was an L bracket, which would be secured to the servo. This bracket was designed to hold the camera and connect to the front wheels. We positioned the camera at the front to capture potential obstacles, while the front wheels were linked to the servo to control turning. The motor-powered rear wheels would then follow the rotation of the front wheels. </p>
+
+            <p>The .stl file for the L bracket is pictured below:</p>
+
+            <p>The next parts we 3D printed were the gearbox, gears, and the front and back axles. Initially, we planned to position the motor behind the servo to save space. However, we discovered that the motor would interfere with the servo, limiting its rotation. As a result, we decided to house and secure the motor separately. We designed a gearbox to enclose the motor and turn the axle. Additionally, we created a connector on the gearbox to attach it to the servo compartment, making the setup resemble a train.</p>
+
+            <p>The .stl file for the gear box, gears, and axles is pictured below:</p>
+
+            <h4>Final Prototype Iteration I in Action</h4>
+
+            <p>After printing all the components, we began assembling our first final prototype iteration. During the first assembly, however, we realized that the dimensions of our prints were too precise, leaving very little tolerance. As a result, we had to reprint the axles, making them smaller to fit properly within the holes. Once the sizing was corrected and all the pieces were secured, we conducted a proof-of-concept test to ensure the pipe robot moved and turned as expected. The test was successful!</p>
+
+            <img src="IMG_9770.jpg" alt="stuck display" style="width: 50%; height: auto;">
+
+            <p>Here is a video of the forward movement!</p>
+
+            <video controls>
+                <source src="./IMG_0018.mp4" type="video/mp4">
+            </video>
+
+            <p>Here is a video demonstrating the successful turning!</p>
+
+            <video controls>
+                <source src="./IMG_0024.mp4" type="video/mp4">
+            </video>
+
+            <h4>PROBLEM!</h4>
+
+            <p>Sadly, our design wasn't perfect. We realized that it was too wide to fit within the pipe. To address this, we needed to completely redesign the gearbox to reduce its width. This involved raising the gearbox to allow the wheels to be placed directly underneath, rather than on the sides, which helped minimize the overall width. We then began 3D modeling a new gearbox for the second iteration of our final prototype.</p>
+
+            <h4>Final Prototype Iteration II</h4>
+
+            <p>In progress...</p>
 
         </div>
     </section>
