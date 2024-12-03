@@ -1,36 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<title>PS70: Intro to Digital Fabrication </title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure consistent size for all images and videos */
+        img, video {
+            width: 500px; /* Slightly larger size */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Add space above images and videos */
+        }
 
+        /* Add margin for breaks between sections */
+        p, h3, h4, h5 {
+            margin-bottom: 20px; /* Adds space below paragraphs and headings */
+        }
 
-<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
-  <div style="align-items: center; justify-content: center;" class="container-fluid">
-    <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
-    </div>
-    <div class="navbar-nav">
-      <h4><a class="nav-link" href="../index.html">Home</a></h4>
-      <h4><a class="nav-link" href="../about.html">About</a></h4>
-    </div>
-  </div>
-</nav>
+        /* Add space above and below specific elements */
+        img, video {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>PS70: Intro to Digital Fabrication</title>
+</head>
 
-<body>
-<xmp style="display:none;">
-<div class="textcontainer">
-<p class="margin"></p>
+<body class="week7">
+    <header>
+        <nav>
+            <div class="logo">
+                PS 70 Fall 2024
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="#">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<h3>Final Project: [INSERT FINAL PROJECT HERE]</h3>
+    <section class="final-project">
+        <div class="container mt-4">
+            <h2>Final Project: Multi-Game LED Display</h2>
 
+            <h3>Project Update</h3>
 
-</div>
-</xmp>
+            <p>To begin my documentation, I am going to give a major update on my final project idea as I decided to change paths since the last time we spoke.</p>
+
+            <p>After carefully evaluating my initial project idea—a sensorized soccer ball—I concluded that it was not feasible due to significant challenges. Specifically, I faced difficulties getting through the inner material of a soccer ball and lacked a solution for securely mounting a circuit board that could withstand high-speed impacts. </p>
+
+            <p>Reflecting on the course, I realized I really had fun with electronics week, particularly working with Neopixels. I wanted to incorporate these arrays in my final project, leading me to pivot my project towards creating a multi-game LED display. This idea awas inspired by several cool existing Arduino projects, including <a href="https://www.reddit.com/r/electronics/comments/rwceht/my_first_digital_electronics_project_from_a_few/">Flappy Bird on an LED matrix</a>, <a href="https://www.youtube.com/watch?v=XuL_Dmm5V4Y">Tetris on a Dot Matrix Display </a>, and an <a href="https://www.youtube.com/watch?v=gMXmvXtGnCU">Atari Breakout game on an 8x8 Matrix.</a> </p>
+
+            <h3>Integrated Prototype Mission: LED Tic Tac Toe Game Board</h3>
+
+            <p>The first step in working towards a completed final project was to create a rough LED display board for initial code testing. This would help me understand the wiring process and how to work with both Neopixels and also a game joystick. I decided to start with Tic Tac Toe, as it is relatively simple to code and requires minimal hardware. Specifically, the game only needs a 5x5 grid of LEDs, making it an ideal starting point for my integrated prototype.</p>
+
+            <h3>Integrated Prototype Development</h3>
+
+            <h4>LED Display Board</h4>
+
+            <p>First, I began building a rough prototype of the LED display board. Since Tic Tac Toe only requires a 5x5 grid, I started by cutting five Neopixel strips, each containing five LEDs. I measured the dimensions of the strips and laser-cut a wooden base with scored lines to mark the strips’ placement. For this initial prototype, I taped the strips onto the base rather than using the permanent adhesive on their backs, allowing me to make adjustments if needed.</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="IMG_9811.jpg" alt="measuringboard" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9813.jpg" alt="leddisplayboard" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <p>Once the LED strips were mounted, I began soldering them together. To ensure consistent power, ground, and signal flow through all of the strips on the board, I connected each strip using three wires: a red wire for power, a black wire for ground, and a blue wire for the data signal. I repeated this soldering process across all five strips, connecting them in sequence.</p>
+
+            <p>With the Neopixel array soldered and fully connected, I integrated it with an ESP32 microcontroller, following a standard pinout diagram to ensure the connections were correct.</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="esp32-neopixel.jpg" alt="esp32-neopixelpinout" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9814.jpg" alt="solderedandintegratedwithboard" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <p>To test the wiring and soldering, I ran a basic Neopixel test code shown below.</p>
+
+            <iframe src="https://app.arduino.cc/sketches/4341596f-d853-4e9d-a803-aea97049106b?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>The test confirmed that all LEDs lit up and were functioning as expected, indicating that the soldering and wiring was successful.</p>
+
+            <video controls>
+                <source src="./IMG_9815.mp4" type="video/mp4">
+            </video>
+
+            <h4>Designing the Enclosure</h4>
+
+            <p>To house the LED display, I designed a two-part 3D-printed enclosure on Fusion. The first model was a back panel to hold the LED board and accommodate the wires. The second part was a top cover with square openings aligned with each LED, allowing the light to project through. I carefully measured the spacing between each individual LED and between each strip to ensure precise alignment of the openings.</p>
+
+            <p>Using the Extrude tool, I also created recessed pockets in the back panel to manage wire routing and provide space for the soldered wire connections jutting out of the board. Once the design was complete, I printed the back panel, which took approximately 16 hours, and the top cover, which took about 5 hours.</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="IMG_9863.jpg" alt="backcontainer" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9865.jpg" alt="frontcover" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <p>Here you can access the .stl file for the back panel and the .stl file for the top cover.</p>
+
+            <h4>Connecting the Joystick</h4>
+
+            <p>After finalizing the design for the display casing, I moved on to integrating a joystick to control the LEDs. I chose the HW-504 joystick and followed this wiring diagram to connect it to my ESP32.</p>
+
+            <img src="esp32-joystick.jpg" alt="esp32joystickpinout" style="width: 50%; height: auto;">
+
+            <h4>Coding the Tic Tac Toe Game</h4>
+
+            <p>With the hardware assembled, I shifted my focus to coding the Tic Tac Toe game. I began by setting up the LED grid with static green LEDs to represent the game’s border. The green LEDs outlined columns two and four, as well as rows two and four, creating a 3x3 play area within the 5x5 grid.</p>
+
+            <p>After several hours of coding, the most challenging part was getting the joystick to accurately navigate the LEDs—moving smoothly from left to right and up and down on the grid. For simplicity, I replaced the traditional X’s and O’s with red LEDs for Player 1 and blue LEDs for Player 2. This meant I also had to figure out how to toggle the LED color: the first press of the joystick would turn the selected LED red, while the next press would switch it to blue. Below is the code that brought me this functionality:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/77189c75-01a3-4e0a-8327-ed80953b7f2f?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>This is what the display looked like when I ran that code:</p>
+
+            <video controls>
+                <source src="./IMG_9862.mp4" type="boardfunctionalitycode">
+            </video>
+
+            <h4>Assembling the Display</h4>
+
+            <p>Once the code started working, I focused on assembling the display by inserting the LED board into the 3D-printed enclosure. Initially, the LED board didn’t fit into the back container—it was off by about 1 mm. After about 20 minutes of sanding, I managed to fit the LED display snugly inside, with the wires fitting perfectly.</p>
+
+            <p>Here’s how the display looked once mounted in the backing:</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="IMG_9869.jpg" alt="enclosed" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9868.jpg" alt="enclosedlit" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <p>I then added the top cover. Although I knew I’d need to reprint the cover with different screw placements and a new filament color, it was sufficient for testing.</p>
+
+            <img src="IMG_9867.jpg" alt="frontcover" style="width: 50%; height: auto;">
+
+            <h4>Coding the Game Logic</h4>
+
+            <p>The next critical task was programming the game logic. I began by listing all eight possible ways a player could win. I then integrated that logic into the code to check if the red or blue team had achieved a win condition. Afterward, I added a final touch: when the red team won, all LEDs briefly flashed red before resetting the game, and the same happened for blue.</p>
+
+            <p>Here is the final code for the tic tac toe game board:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/580e1d9d-675e-4ada-895c-0ed4cddc667e?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>Here’s the result of that code in action:</p>
+
+            <video controls>
+                <source src="./IMG_9874.mp4" type="integratedprototypefinaldemo">
+            </video>
+
+            <h4>Addressing Cursor Navigation Challenges</h4>
+
+            <p>One issue I encountered was the difficulty of accurately moving the joystick to the desired positions—directional movement was unclear. To solve this, I added directional arrows to the joystick, making navigation much easier!</p>
+
+            <img src="IMG_9875.jpg" alt="joystickdirectionarrows" style="width: 50%; height: auto;">
+
+            <h3>Next Steps</h3>
+
+            <p>Moving forward, I plan to scale up the LED display by upgrading it to a 64x64 matrix and expanding its enclosure to accommodate the new design. Additionally, I will 3D print a resin cover to saturate the brightness of the lights so it is easier on the eyes. Once the display is fully assembled, I will develop code for additional games and design a mechanism to attach a joystick, transforming the setup into an interactive arcade-style game board.</p>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-3">
+        <p>© 2024 PS 70
+    </footer>
+
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
-</html>
