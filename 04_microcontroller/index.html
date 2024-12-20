@@ -113,7 +113,7 @@
 
             <p>I then uploaded code that I slightly modified from an existing library called "strandtest.ino" that I thought provided a good starting point for my understanding.</p>
 
-            [CODE 1]
+            <iframe src="https://app.arduino.cc/sketches/61937194-400b-4034-8d8f-9988d8e94e6a?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
             <p>This code controls the Neopixel to create various lighting effects. It initializes the strip and sets the brightness, then enters a loop where it displays a sequence of colors, including red, green, and blue. It also features a theater marquee effect, where lights chase across the strip, and a flowing rainbow effect.</p>
 
@@ -158,7 +158,7 @@
 
             <p>I then wanted to take it up a notch and learn how to create an effect where each pixel lights up in sequence. To do this, I wrote the following code: </p>
 
-            [CODE 2]
+            <iframe src="https://app.arduino.cc/sketches/2a054cca-cd77-42d9-9397-c599c90aab25?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
             <p>What this code does is in the `loop()` function, it lights up one pixel at a time in green, waits for half a second, and then moves to the next pixel. Essentially, what we expect to see is the green light moving from bottom to top, one circle at a time; once it gets to the top, it starts again from the bottom.</p>
 
@@ -182,7 +182,7 @@
 
             <p> The final aspect of Neopixel control I wanted to experiment with was controlling the amount of pixels that were lit up. To do this, I wrote the following code.</p>
 
-            [CODE 3]
+            <iframe src="https://app.arduino.cc/sketches/b111d81f-363c-4cc6-b906-0a4f2a76943b?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
             <p> This code sets the color of the Neopixel strip according to the binary representation of that number. Using the specified color,  it waits for the delay before repeating the process. The loop function basically calls the showBinary function with a specified color, delay, and number.</p>
 
@@ -216,7 +216,7 @@
 
             <p> I then produced the following code to control my Neopixel based on distance measurements received via UART (Universal Asynchronous Receiver-Transmitter) serial communication. </p>
 
-            [CODE 4]
+            <iframe src="https://app.arduino.cc/sketches/2ce3cb42-7dfd-4930-a417-f20a26667038?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
             <p> I began by defining constants for the pin number, the number of LEDs, and the maximum distance to be measured. The bin width is calculated to determine how far each LED represents in terms of distance. An Adafruit NeoPixel object named "stick" is initialized for controlling the LED strip. In the `setup()` function, the primary and secondary serial communications are initiated, the NeoPixel strip is prepared for use, its brightness is set, and a short delay is introduced to stabilize the setup. In the main `loop()` function, the code sends a command (0x55) to request distance data from a sensor. It then waits until two bytes of data are available to read from the UART buffer, combining these bytes into a single 16-bit integer that represents the measured distance. The distance value is printed to the Serial Monitor for debugging. The code then calculates how many LEDs to light based on the distance, ensuring it does not exceed the total number of LEDs. It clears any previous states of the NeoPixels, lights up the appropriate number of LEDs in red, and updates the strip to reflect these changes. Finally, a brief delay is introduced before the loop repeats.</p>
 
