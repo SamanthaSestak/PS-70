@@ -188,6 +188,198 @@
 
             <p>Moving forward, I plan to scale up the LED display by upgrading it to a 64x64 matrix and expanding its enclosure to accommodate the new design. Additionally, I will 3D print a resin cover to saturate the brightness of the lights so it is easier on the eyes. Once the display is fully assembled, I will develop code for additional games and design a mechanism to attach a joystick, transforming the setup into an interactive arcade-style game board.</p>
 
+            <h2>Final Project Documentation</h2>
+
+            <p>It was great to gain experience coding and learning how to control neopixel displays but then it became time for the real thing!</p>
+
+            <p>I wanted to create a much larger display and so I purchased a 64x32 RGB LED display from <a href="https://www.adafruit.com/product/2279">Adafruit</a> that I could wire up.</p>
+
+            <img src="IMG_0094.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <h3>Wiring the LED Matrix</h3>
+
+            <p>Once the board came in, it was time to get to wiring on a breadboard! I followed this wiring schematic:</p>
+
+            <img src="MatrixPinout.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>However, I had to modify the pinouts for the digital pins a bit to accommodate the different Adafruit neopixel libraries, which I will explain in a second.</p>
+
+            <p>Here is what my initial wiring looked like:</p>
+
+            <img src="IMG_9895.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>Then it was time to find and upload code that worked for the display. This process proved deceptively time-consuming because I had to scour numerous libraries to land on one that worked for my pinout scheme.</p>
+
+            <p>It seemed that no library I stumbled upon was perfect. There was always some issue. For instance, I would upload example code from one library that would have no flickering or noise issues but the pixels would not be doing what the code was telling it to do. Other libraries in which the pixels were displaying correctly would have issues like flickering or unresolved noise manifesting in lit up pixels when no power was being delivered to the matrix. Here is an example of the flickering:</p>
+
+            <video controls>
+                <source src="./IMG_9897.mp4" type="video/mp4">
+            </video>
+
+            <p> I was beginning to lose hope. But then I encountered the Adafruit Protomatter Library. After uploading example code from this library, the display worked perfectly! There was no background noise or flickering.</p>
+
+            <img src="IMG_9894.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>Just to verify that this was not just luck from a single example code, I wrote simple code to just have the entire matrix turn green. When I did this, there was no flickering or noise, verifying that this library finally worked!</p>
+
+            <video controls>
+                <source src="./IMG_9898.mp4" type="video/mp4">
+            </video>
+
+            <p>Next, I began integrating my LCD and joystick with the matrix. I wired them up using these pinout diagrams:</p>
+
+             <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="LCDPinout.jpg" alt="measuringboard" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="esp32-joystick.jpg" alt="leddisplayboard" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <p>Here is what the circuit looked like:</p>
+
+            <img src="IMG_9900.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>I then added code for the LCD to check that it was working properly with the display and thankfully it was after I uploaded it. Here is the code I used:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/9708df57-0d68-4285-bd44-06ddac02cbbe?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <h4>Soldering</h4>
+
+            <p>After verifying that the code and pinout schematic were all working together seamlessly, I then began the very daunting soldering process. I am a beginner at soldering and this was a large, complicated job for me because it required over 30 different connections, if you take combine the matrix connections and the connections integrating the LCD display and the joystick.</p>
+
+            <p>Nevertheless, I got to work!</p>
+
+            <img src="IMG_9903.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>I thought this would be a great way to improve my soldering skills and it was! But after some major mistakes were made first :)</p>
+
+            <p>I am sharing this as a cautionary tale. While soldering the connections on one side of my microcontroller, I was using the first pin as a reference point. Unfortunately, I realized after soldering around 16 connections that this first pin was actually empty and the second pin represented the first pin of the ESP32. This meant that all of my connections on that side of the microcontroller were off by one pin and so I had to, with Bobby’s much appreciated help, de-solder the whole board and start again.</p>
+
+            <p>This mistake ended up being a blessing in disguise! Originally, I stripped the physical wires from the matrix and was soldering them to the board. However, these wires were very thin and fragile and did not establish a great connection because the ends kept fraying. After I made the mistake, I switched over to soldering standard wires into the board that I would then connect to the matrix through the connector it comes with. This soldering process was much less difficult and time-consuming and I made swift progress with my matrix connections:</p>
+
+             <img src="IMG_9906.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+             <p>Then I added the connections for the LCD (green) and the joystick (yellow). Almost complete! The last thing I had to do was figure out how to disseminate power to the board which I did through screw terminals. One screw terminal attached to the VCC power source on the back of the matrix which gives power to the board and the other screw terminal had wires that connected to the power adapter. This was required because the matrix demanded specific power requirements: 5V and 3.7 A. With that, the soldering job was complete!</p>
+
+             <img src="IMG_9907.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+             <p>Now it was time for the daunting task of connecting everything to the matrix and crossing my fingers that it worked! Before I did this, I used a multimeter to verify the connections were adding up and that everything was properly grounded. Something I realized I had to do was add another connection for the 3.3 V on the microcontroller as the joystick required this power supply instead of 5V to move effectively.</p>
+
+             <p>Here was what everything looked like connected to the board:</p>
+
+             <img src="IMG_9909.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+             <p>Then I uploaded the previous code again. Luckily, it worked! The LCD turned on and the matrix and joystick could communicate with each other.</p>
+
+            <video controls>
+                <source src="./IMG_9910.mp4" type="video/mp4">
+            </video>
+
+            <h3>Constructing Pieces for Final Assembly</h3>
+
+            <p>After the soldering was down, I then began the task of designing some pieces for assembling the final display. I knew that I did not want the wires that would be connected to the LCD and joystick to be visible. I decided I should route the wires underneath the wooden piece that would hold the joystick and the LCD. I first spent some time mapping out the dimensions so that the wiring would fit properly:</p>
+
+            <img src="IMG_0064.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>This was the vision:</p>
+
+            <img src="IMG_9921.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>I then took several trips to the CNC milling machine to get this right. The first time I milled it, I unknowingly did it the opposite way. I then tried to flip it but I only flipped it internally, leading the sizing to be off. But they do say the third time is the charm! After the third time at the mill, it finally came out how I wanted it to.</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="IMG_0066.jpg" alt="measuringboard" class="img-fluid" style="width: 500px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_0069.jpg" alt="leddisplayboard" class="img-fluid" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+
+            <h3>Programming the Games</h3>
+
+            <p>Next came arguably the most time-consuming and challenging part of this entire project: coding the games!</p>
+
+            <p>I began by coding flappy bird because I thought it would be the more difficult game to code (spoiler alert: it was not.) I was pretty confident with writing the code to detect collisions and present the pixels in a visually aesthetic way that resembled flappy bird. However, the biggest challenge was in moving the green rectangles, representing the obstacles properly. After much trial and error, I devised a strategy in which I would define a set gap (e.g. 8 pixels) between a top and bottom rectangle. Each top and bottom rectangle would represent one instance. Then I would set constant widths of the rectangles and also constant spacing between them but I would randomly generate the heights which would vary the gap and difficulty of the game. After employing this method, the game worked!</p>
+
+            <video controls>
+                <source src="./IMG_9942.mp4" type="video/mp4">
+            </video>
+
+            <p>I then added code so that the score would output on the LCD. I calculated the score by adding one each time a new rectangle generated.</p>
+
+            <img src="IMG_9944.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>Here you can see my finalized flappy bird game code:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/d63e7ce4-fac6-43c5-b757-0a1076bde442?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>Next, I began coding Tic Tac Toe. I thought that because I had already coded Tic Tac Toe for my integrated prototype, I could just adapt the code for the matrix but this was not the case. Coding this game proved incredibly challenging because Tic Tac Toe contains many game state switches and getting the joystick to move properly was also quite difficult.</p>
+
+            <p>For instance, at first, I was trying to get the joystick to move around individual pixels but this proved too challenging. I switched my approach to having the joystick navigate the individual squares in a 3x3 Tic Tac Toe grid.</p>
+
+            <p>When you pressed the joystick, it would output either a red X or green O for each player. I used similar code to the flappy bird code to integrate the switch function of the joystick but what proved difficult was toggling between these different outputs. Once that was figured out, however, I integrated the game logic into the code and then wrote code to output a red W, green W, or blue T as well as messages about who won the game on the LCD depending on the game outcome. This coding included a lot of clearing and refreshing the display but eventually I got it to work.</p>
+
+            <p>Here you can see my finalized Tic Tac Toe game code:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/3441aee4-796c-464f-95b8-11524a6eec54?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>Now we are onto the hardest part of my coding! </p>
+
+            <p>I didn’t want to have to continue separately uploading the code to play either game at the fair and so I decided to code a menu that opens when the display is powered. When you click on either a grid reading “FB” or a grid reading “TTT,” you enter into either game and after each game is over you reset back to the menu screen.</p>
+
+            <p>This coding proved to be very difficult. To implement the menu, I created header files (.h files) containing the code for Flappy Bird and Tic Tac Toe. These files were then referenced in a main menu script, which acted as the central hub for the program. Ensuring that each game’s code was modular and self-contained required significant effort. This involved separating the logic, assets, and functions for Flappy Bird and Tic Tac Toe to avoid interdependencies that could lead to errors or conflicts when switching between the games. One of the most difficult aspects was managing function calls across the menu and the individual games. I needed to ensure that functions were not repeatedly called or incorrectly invoked. Transitioning between the menu and the games required careful state management. I had to create a robust system to track whether the program was in the menu, Flappy Bird, or Tic Tac Toe, and to reset the game state properly when returning to the menu after each game. Debugging errors when integrating two complex game systems into a unified menu was challenging. Simple mistakes, like inadvertently sharing variables or functions between the games, could cause cascading failures that were difficult to trace.</p>
+
+            <p>It was a great learning experience in the end and I did develop a successful code.</p>
+
+            <p>Here is the main menu script code:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/8ae63910-5d27-40ec-a3e6-e2483b3bf6a2?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>Here is the flappy bird h file:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/37a50b77-e4c4-46be-8684-175616e2f601?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <p>Here is the tic tac toe h file:</p>
+
+            <iframe src="https://app.arduino.cc/sketches/e1eac6a7-abdb-421f-a42c-f04df896b097?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
+
+            <h3>Final Assembly</h3>
+
+            <p>Once the coding aspect of the project was finished, I began my assembly. I drilled holes and screwed the matrix into the bottom stage. I then routed the wires through their channels, and taped them down to the stage. I realized during the assembly process that my LCD was backwards using my wire routing channel. I did not have time to fix the design and so what I did to remedy this was to extend the wires for the LCD even more and then rotate it around to its correct positioning. Although this did not look as visually appealing, it was better than having the game results print backwards.</p>
+
+            <img src="IMG_9950_2.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>To secure the wires into place, I also laser cut an acrylic backing that I attached to the bottom of the stage and screwed in place. This is what the design looked like:</p>
+
+            <img src="IMG_0092.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>I secured all of my soldering work and power supply elements to the back of the display with tape. The reason I am using tape is because I want a temporary securing method. I plan, in a future iteration of this project, to power the microcontroller wirelessly so I don’t have to keep plugging in my computer. This would require more soldering and so I didn’t want to screw down the board just yet!</p>
+
+            <img src="IMG_0097.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p>I then milled out pieces of wood to create a stage around the display. Nonetheless, I realized this made it hard to see the display unless you were in the zone.</p> 
+
+             <img src="IMG_0093.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+             <p>I thought this would be counterproductive for the fair so I left it how it was originally.</p>
+
+             <p>This concludes my final project documentation and I will now show some video demonstrations of it in action.</p>
+
+            <h3>Video Demo</h3>
+
+            <p>During the fair, I was tasking everybody that came to my station to try to get the high score. This really motivated Pedro and Jack, the Messi and Ronaldo of flappy bird. They were locked in and vigorously competed for the title. Pedro held the title of the leading scorer with 134 for most of the fair.</p>
+
+            <img src="IMG_9883.jpg" alt="newfrontcoverscrewedon" style="width: 50%; height: auto;">
+
+            <p> But ultimately, in the last few minutes, Jack emerged victorious with the high score of 144, emerging as the Flappy Bird King!</p>
+
+            <h3>Next Steps</h3>
+
+            <p>Although I am taking a break for now, I am not done yet. I would love to add more games to this arcade game board like tetrus and pac-man! </p>
+
         </div>
     </section>
 
