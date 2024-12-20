@@ -128,146 +128,33 @@
 
             <p>Then it was time to calibrate!</p>
 
+            <p>To begin recording data points on the serial monitor, I modified the code to just collect data from the serial monitor. The serial monitor displays data received through the serial communication protocol, represented by digital values, that correspond to voltage levels on microcontroller pins.</p>
 
+            <iframe src="https://app.arduino.cc/sketches/5e20107d-e727-403a-9639-2507a51c7732?view-mode=embed" style="height:510px;width:100%;margin:10px 0" frameborder=0></iframe>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <p> Our team was responsible for the locomotion of the pipe robot, which involved designing its overall structure, integrating the servo and stepper motors for movement, and developing the drive system to ensure it could move forward and turn effectively. </p>
-
-            <h4>Step 1: Stepper Motor Activation</h4>
-
-            <p>Before developing our rough prototype, we began with the most basic aspect of the design: getting the stepper motor to move. To achieve this, we built the following circuit:</p>
+            <p>My plan to compare the data I was getting to real world values was to use the iPhone flashlight. There is a setting on the iPhone for you to adjust the brightness level of the flashlight and there are four different levels.</p>
 
             <div style="text-align: center;">
                 <div style="display: inline-block;">
-                    <img src="IMG_9650.jpg" alt="esp32 pinout" class="img-fluid" style="width: 600px; height: 500px; margin-right: 10px;">
+                    <img src="IMG_0060.jpg" alt="esp32 pinout" class="img-fluid" style="width: 600px; height: 500px; margin-right: 10px;">
                 </div>
                 <div style="display: inline-block;">
-                    <img src="IMG_9645.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
+                    <img src="IMG_0061.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_0062.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_0063.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
                 </div>
             </div>
 
-            <p>The correct code is displayed below: </p>
+            <p>My idea was to track the serial monitor values outputted by the phototransistor in ambient light, complete darkness, and for these four iPhone flashlight levels. Apple does not make publicly available the brightness of each individual flashlight level but it does state that the maximum brightness is 50 lumens. Thus, I calibrated the data accordingly: </p>
 
-            <p>Here is a video of the stepper motor rotating after uploading the code:</p>
+            <img src="phototransistorcalibration.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-            <video controls>
-                <source src="./IMG_9644.mp4" type="video/mp4">
-            </video>
+            <p>The relationship between the sensor readings and the real-life brightness levels (measured in lumens) appears to be non-linear, with diminishing returns in sensor output as the light intensity increases. The data also suggests some sort of saturation effect at higher brightness as the readings started increasing less steeply between the third and fourth flashlight levels.</p>
 
-            <h4>Step 2: Rough Prototyping with Legos</h4>
-
-            <p>We then used legos to start doing some very rough prototyping with our rotating steppor motor. We used a heat gun to attach lego wheels onto our motor to analyze its motion.</p>
-
-            <p>Then, using the legos, we started experimenting with different design options. We liked the idea of using a gear system with a front and back axle to rotate the wheels. We experimented with several different orientations of this gear system below:</p>
-
-            <div style="text-align: center;">
-                <div style="display: inline-block; width: 300px; height: 300px;">
-                    <video controls style="width: 100%; height: 100%;">
-                        <source src="./IMG_9649.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div style="display: inline-block; width: 300px; height: 300px;">
-                    <video controls style="width: 100%; height: 100%;">
-                        <source src="./IMG_9647.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div style="display: inline-block; width: 300px; height: 300px;">
-                    <video controls style="width: 100%; height: 100%;">
-                        <source src="./IMG_9648.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-
-            <br> 
-            
-            <p>We settled on what we believed was the most efficient system and captured an image of it:</p>
-
-            <img src="IMG_9652.jpg" alt="stuck display" style="width: 50%; height: auto;">
-
-            <p>We began building a rough prototype as a proof of concept of our motion. In this iteration, we wanted to mostly pay attention to housing our different components in an economical way. When everything was taped together, our rough prototype looked like this:</p>
-
-            <video controls>
-                <source src="./IMG_9710.mp4" type="video/mp4">
-            </video>
-
-            <p>Here is a video of the rough prototype in action:</p>
-
-             <video controls>
-                <source src="./IMG_9715.mp4" type="video/mp4">
-            </video>
-
-            <h4>Step 3: Servo Activation</h4>
-
-            <p>With the remaining time we had, we also constructed a quick circuit to get the servo moving so that we could now incorporate the front wheels into our design.</p>
-
-            <p>The code for the servo can be accessed below:</p>
-
-            <p>Here is a video of the servo in action:</p>
-
-            <video controls>
-                <source src="./IMG_9717.mp4" type="video/mp4">
-            </video>
-
-            <h4>Next Steps</h4>
-
-            <p>Going forward, we need to more effectively secure all of our pieces together in a more streamlined prototype and work on integrating our design with the snakehead team to accommodate the servo. We also need to begin 3D printing pieces to warehouse the different components and secure them together more reliably. With this, we should accomplish a more polished prototype. </p>
-
-            <h4>Final Prototype Iteration I </h4>
-
-            <p>When our team reconvened, we spent time sketching our final design. Pictured below are several sketches of our first idea.</p>
-
-            <p>Based on these sketches, we began 3D printing several pieces. The first part we printed was an L bracket, which would be secured to the servo. This bracket was designed to hold the camera and connect to the front wheels. We positioned the camera at the front to capture potential obstacles, while the front wheels were linked to the servo to control turning. The motor-powered rear wheels would then follow the rotation of the front wheels. </p>
-
-            <p>The .stl file for the L bracket is pictured below:</p>
-
-            <p>The next parts we 3D printed were the gearbox, gears, and the front and back axles. Initially, we planned to position the motor behind the servo to save space. However, we discovered that the motor would interfere with the servo, limiting its rotation. As a result, we decided to house and secure the motor separately. We designed a gearbox to enclose the motor and turn the axle. Additionally, we created a connector on the gearbox to attach it to the servo compartment, making the setup resemble a train.</p>
-
-            <p>The .stl file for the gear box, gears, and axles is pictured below:</p>
-
-            <h4>Final Prototype Iteration I in Action</h4>
-
-            <p>After printing all the components, we began assembling our first final prototype iteration. During the first assembly, however, we realized that the dimensions of our prints were too precise, leaving very little tolerance. As a result, we had to reprint the axles, making them smaller to fit properly within the holes. Once the sizing was corrected and all the pieces were secured, we conducted a proof-of-concept test to ensure the pipe robot moved and turned as expected. The test was successful!</p>
-
-            <img src="IMG_9770.jpg" alt="stuck display" style="width: 50%; height: auto;">
-
-            <p>Here is a video of the forward movement!</p>
-
-            <video controls>
-                <source src="./IMG_0018.mp4" type="video/mp4">
-            </video>
-
-            <p>Here is a video demonstrating the successful turning!</p>
-
-            <video controls>
-                <source src="./IMG_0024.mp4" type="video/mp4">
-            </video>
-
-            <h4>PROBLEM!</h4>
-
-            <p>Sadly, our design wasn't perfect. We realized that it was too wide to fit within the pipe. To address this, we needed to completely redesign the gearbox to reduce its width. This involved raising the gearbox to allow the wheels to be placed directly underneath, rather than on the sides, which helped minimize the overall width. We then began 3D modeling a new gearbox for the second iteration of our final prototype.</p>
-
-            <h4>Final Prototype Iteration II</h4>
-
-            <p>In progress...</p>
 
         </div>
     </section>
