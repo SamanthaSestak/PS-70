@@ -100,6 +100,40 @@
 
             <h3>Assignment 2: [Use + Calibrate Another Sensor]</h3>
 
+            <h4>Input Sensor: Phototransistor</h4>
+
+            <p>I really wanted to learn how to program a phototransistor today. A phototransistor’s output values depends on how much light hits its face. In general, resistance goes down as light levels increase and go up as light levels decrease. Arduinos measure voltage. This means that as light increases, voltage goes up and as light decreases, voltage goes down.</p>
+
+            <p>Here is the schematic for my circuit:</p>
+
+            <img src="PhotoresistorSchematic.jpg" alt="stuck display" style="width: 50%; height: auto;">
+
+            <p>The phototransistor gets 5V from the Arduino’s power supply and then connected to a resistor which connects to ground. We are measuring the voltage on that pin using the arduino analog input A0. This forms a voltage divider circuit.</p>
+
+            <p>This was what my circuit looked like fully constructed:</p>
+
+            <img src="IMG_0057.jpg" alt="stuck display" style="width: 50%; height: auto;">
+
+            <p>I then tried uploading some code and my circuit was not working. I tried switching out the resistors for different values and it still wasn’t working. Then I realized that the threshold I was setting (500) was way too high. I looked at the values on the serial monitor and realized that when I covered the phototransistor, the value was around 1 (see, it is true that voltage goes down when it gets darker) and hovered around 8-10 in ambient lighting.</p>
+
+            <p>Here is the finalized code:</p>
+
+            <p>And a video demo of the sensor functioning with the output LED:</p>
+
+            <video controls>
+                <source src="./IMG_0059.mp4" type="video/mp4">
+            </video>
+
+            <p>Then it was time to calibrate!</p>
+
+
+
+
+
+
+
+
+
 
 
 
