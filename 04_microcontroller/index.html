@@ -1,270 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<title>PS70: Intro to Digital Fabrication </title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure consistent size for all images and videos */
+        img, video {
+            width: 500px; /* Slightly larger size */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Add space above images and videos */
+        }
 
+        /* Add margin for breaks between sections */
+        p, h3, h4, h5 {
+            margin-bottom: 20px; /* Adds space below paragraphs and headings */
+        }
 
-<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
-  <div style="align-items: center; justify-content: center;" class="container-fluid">
-    <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
-    </div>
-    <div class="navbar-nav">
-      <h4><a class="nav-link" href="../index.html">Home</a></h4>
-      <h4><a class="nav-link" href="../about.html">About</a></h4>
-    </div>
-  </div>
-</nav>
+        /* Add space above and below specific elements */
+        img, video {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>PS70: Intro to Digital Fabrication</title>
+</head>
 
-<body>
-<xmp style="display:none;">
-<div class="textcontainer">
-<p class="margin">   </p>
+<body class="week7">
+    <header>
+        <nav>
+            <div class="logo">
+                PS 70 Fall 2024
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="#">Final Project</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<h3>Week 4: Microcontroller Programming</h3>
+    <section class="final-project">
+        <div class="container mt-4">
+            <h2>Week 4: Microcontroller Programming</h2>
 
-<h4>Project Idea: Serial Communication</h4>
+            <h3>Project Idea: Serial Communication</h3>
 
-<p> This week, I really wanted to experiment with serial communication because I believe it is a crucial skill that is particularly relevant to my SmartCleat final project idea. Knowing how to configure and optimize serial communication ensures that devices can send and receive data with minimal delay. This is key for sensor data collection or controlling actuators within the SmartCleat. </p>
+            <p>This week, I really wanted to experiment with serial communication because I believe it is a crucial skill that is particularly relevant to my SmartCleat final project idea. Knowing how to configure and optimize serial communication ensures that devices can send and receive data with minimal delay. This is key for sensor data collection or controlling actuators within the SmartCleat.</p>
 
-<p>To experiment with this idea, I decided to play with a neopixel and try to have it communicate with an ultrasonic distance sensor. </p>
+            <p>To experiment with this idea, I decided to play with a neopixel and try to have it communicate with an ultrasonic distance sensor.</p>
 
-<h5>This Week's Objectives</h5>
+            <h4>This Week's Objectives</h4>
+            <p> My project objectives for this week were to</p>
+            <p>(1) Learn to manipulate a Neopixel strip to control multiple RGB LEDs using just one data pin on my Arduino.</p>
+            <p>(2) Introduce serial communication using the UART protocol to connect my Neopixel strip with an ultrasonic distance sensor.</p>
 
-<p> My project objectives for this week were to 
-(1) Learn to manipulate a Neopixel strip to control multiple RGB LEDs using just one data pin on my Arduino
-(2) Introduce serial communication using the UART protocol to connect my Neopixel strip with an ultrasonic distance sensor </p>
+            <h5>Background Research: How to Serialize Data</h5>
 
-<h6>Background Research: How to Serialize Data</h6>
+            <p> I started by doing some background research on serializing data so I could better understand it before executing this project.</p>
 
-<p> I started by doing some background research on serializing data so I could better understand it before executing this project.
+            <p> What I learned is that combinatory circuits don’t have memory – meaning outputs depend only on the current inputs, not previous ones. However, memory is often crucial, so to solve this, electrical engineers created combinatory circuits with feedback to remember the state of a signal. This creates registers, which are the basic memory units in computers. Circuits with memory are called sequential circuits because their outputs depend on both current and past inputs.</p>
 
-What I learned is that combinatory circuits don’t have memory – meaning outputs depend only on the current inputs, not previous ones. However, memory is often crucial, so to solve this, electrical engineers created combinatory circuits with feedback to remember the state of a signal. This creates registers, which are the basic memory units in computers. Circuits with memory are called sequential circuits because their outputs depend on both current and past inputs.
+            <p>One important sequential circuit I learned about for serial communication was the shift register. I started by learning about the 74HC595 shift register, although I didn’t end up using it, to develop my knowledge base on how these chips work. What the 74HC595 chip does is expand the number of digital outputs on your Arduino by adding 8 extra outputs per chip. You can even add more outputs by chaining multiple chips together to control even more outputs.</p>
 
-One important sequential circuit I learned about for serial communication was the shift register. I started by learning about the 74HC595 shift register, although I didn’t end up using it, to develop my knowledge base on how these chips work. What the 74HC595 chip does is expand the number of digital outputs on your Arduino by adding 8 extra outputs per chip. You can even add more outputs by chaining multiple chips together to control even more outputs. </p>
+            <img src="shiftregister.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<br>
+            <p>The chair analogy was very helpful to me in learning how this technology works. Imagine the 74HC595 is a row of 8 chairs, each either empty (0) or occupied (1). Every time a clock rings, everyone moves one chair to the right, with the rightmost person existing, and a new person enters the leftmost chair or it remains empty. This shift action helps us manage data movement in the register. After shifting data into the register, we then use another signal to update the outputs. Essentially, when the clock pin goes HIGH, all values shift to the right, and new data is added.</p>
 
-<img src="shiftregister.jpg" alt="shift register" style="width: 600px; height: auto;">
+            <p>This is what I now understand to be basic serial communication, which sends data one bit at a time compared to parallel communication, where all bits are sent simultaneously!</p>
 
-<br>
+            <img src="parallelvserial.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<p> The chair analogy was very helpful to me in learning how this technology works. Imagine the 74HC595 is a row of 8 chairs, each either empty (0) or occupied (1). Every time a clock rings, everyone moves one chair to the right, with the rightmost person existing, and a new person enters the leftmost chair or it remains empty. This shift action helps us manage data movement in the register. After shifting data into the register, we then use another signal to update the outputs. Essentially, when the clock pin goes HIGH, all values shift to the right, and new data is added. 
+            <h5>Neopixels and Serial Communication</h5>
 
-This is what I now understand to be basic serial communication, which sends data one bit at a time compared to parallel communication, where all bits are sent simultaneously! </p>
+            <p>Neopixels utilize a similar concept to shift registers. Each Neopixel contains an RGB LED, a driver, and a communication module. The RGB data is sent bit-by-bit through a data pin, and Neopixels can be chained together to control many LEDs using just one Arduino pin.</p>
 
-<br>
+            <img src="neopixel.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<img src="parallelvserial.jpg" alt="serial v parallel communication" style="width: 600px; height: auto;">
+            <h6>Level-shifting IC 74AHCT125</h6>
 
-<br>
+            <p>Neopixels require 5V logic, so we have to use a level-shifting IC, the 74AHCT125, to handle the voltage difference. You connect the IC to power, ground, and select a channel for data transmission.</p>
 
-<h7>Neopixels and Serial Communication</h7>
+            <img src="74AHCT125pinout.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<p>Neopixels utilize a similar concept to shift registers. Each Neopixel contains an RGB LED, a driver, and a communication module. The RGB data is sent bit-by-bit through a data pin, and Neopixels can be chained together to control many LEDs using just one Arduino pin.</p>
+            <h6>Choosing a Serial Protocol</h6>
 
-<br>
+            <p>When researching example Arduino projects involving serial communication, I kept coming across the same couple of serial protocols: UART, SPI, and I2C. I chose to use UART for my project because unlike the other two, it doesn’t use a clock signal. The devices just have to agree on the transmission speed, or baud rate.</p>
 
-<img src="neopixel.jpg" alt="neopixel" style="width: 600px; height: auto;">
+            <h6>US-100 Ultrasonic Distance Sensor</h6>
 
-<br>
+            <p>I chose to use the US-100 ultrasonic distance sensor in serial communication mode. The Arduino and sensor will communicate over UART which sends data bit-by-bit without a clock signal. To initiate communication, the Arduino sends a signal to the sensor using the command `Serial1.write()`, which sends data at the agreed baud rate. The sensor responds with a 16-bit distance measurement, which the Arduino reads.</p>
 
-<h8>Level-shifting IC 74AHCT125</h8>
+            <img src="US100.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<p>Neopixels require 5V logic, so we have to use a level-shifting IC, the 74AHCT125, to handle the voltage difference. You connect the IC to power, ground, and select a channel for data transmission.</p>
+            <h3>This Week’s Project Goal</h3>
 
-<br>
+            <p>My main goal after solidifying my knowledge on how to control the Neopixel was to get the Neopixel lights to change with different distance measurements taken on the US-100 sensor.</p>
 
-<img src="74AHCT125pinout.jpg" alt="IC pinout" style="width: 600px; height: auto;">
+            <p>I began by building my circuit to practice controlling the Neopixel. I used these pinouts obtained from online datasheets to inform my circuit design.</p>
 
-<br>
+            <h4>Playing with Neopixels</h4>
 
-<h9>Choosing a Serial Protocol</h9>
-<p>When researching example Arduino projects involving serial communication, I kept coming across the same couple of serial protocols: UART, SPI, and I2C. I chose to use UART for my project because unlike the other two, it doesn’t use a clock signal. The devices just have to agree on the transmission speed, or baud rate.</p>
+            <p>I used this connection diagram for the IC quad-level shifter to inform my circuit:</p>
 
-<h10>US-100 Ultrasonic Distance Sensor</h10>
+            <img src="ICconnectiondiagram.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<p>I chose to use the US-100 ultrasonic distance sensor in serial communication mode. The Arduino and sensor will communicate over UART which sends data bit-by-bit without a clock signal. To initiate communication, the Arduino sends a signal to the sensor using the command `Serial1.write()`, which sends data at the agreed baud rate. The sensor responds with a 16-bit distance measurement, which the Arduino reads.</p>
+            <p>This was the final circuit iteration that I created:</p>
 
-<br>
+            <img src="IMG_9035_2.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<img src="US100.jpg" alt="distance sensor" style="width: 600px; height: auto;">
+            <p>I then uploaded code that I slightly modified from an existing library called "strandtest.ino" that I thought provided a good starting point for my understanding.</p>
 
-<br>
+            [CODE 1]
 
-<h11>This Week’s Project Goal</h11>
-<p>My main goal after solidifying my knowledge on how to control the Neopixel was to get the Neopixel lights to change with different distance measurements taken on the US-100 sensor.
+            <p>This code controls the Neopixel to create various lighting effects. It initializes the strip and sets the brightness, then enters a loop where it displays a sequence of colors, including red, green, and blue. It also features a theater marquee effect, where lights chase across the strip, and a flowing rainbow effect.</p>
 
-I began by building my circuit to practice controlling the Neopixel. I used these pinouts obtained from online datasheets to inform my circuit design.</p>
+            <p>Here was the first result of uploading this code to the Arduino:</p>
 
-<h12>Playing with Neopixels</h12>
-<p> I used this connection diagram for the IC quad-level shifter to inform my circuit</p>
+            <img src="IMG_9038.jpg.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<br>
+            <video controls>
+                <source src="./IMG_9039.MOV" type="video/mp4">
+            </video>
 
-<img src="ICconnectiondiagram.jpg" alt="connect IC" style="width: 600px; height: auto;">
+            <p> I then wrote code for the rainbow marquee-theater effect that I wanted. This was the result: </p>
 
-<br>
+            div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="IMG_9047.jpg.jpg" alt="esp32 pinout" class="img-fluid" style="width: 600px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9051.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9057.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
+                </div>
+            </div>
 
-<p>This was the final circuit iteration that I created:</p>
+            <div style="text-align: center;">
+                <div style="display: inline-block; width: 300px; height: 300px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./IMG_9049.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div style="display: inline-block; width: 300px; height: 300px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./IMG_9053.mp4.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
 
-<br>
+            <p>I then wanted to take it up a notch and learn how to create an effect where each pixel lights up in sequence. To do this, I wrote the following code: </p>
 
-<img src="IMG_9035_2.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
+            [CODE 2]
 
-<br>
+            <p>What this code does is in the `loop()` function, it lights up one pixel at a time in green, waits for half a second, and then moves to the next pixel. Essentially, what we expect to see is the green light moving from bottom to top, one circle at a time; once it gets to the top, it starts again from the bottom.</p>
 
-<p>I then uploaded code that I slightly modified from an existing library called "strandtest.ino" that I thought provided a good starting point for my understanding. </p>
+            <video controls>
+                <source src="./IMG_9058.mp4" type="video/mp4">
+            </video>
 
-[code 1]
+            <p> I then wanted to experiment with changing different elements of the code and seeing how this would impact my light display. I commented out stick.clear().</p>
 
-<p> This code controls the Neopixel to create various lighting effects. It initializes the strip and sets the brightness, then enters a loop where it displays a sequence of colors, including red, green, and blue. It also features a theater marquee effect, where lights chase across the strip, and a flowing rainbow effect. 
+            <p>Starting with the bottom circle, each circle turns green in order (from bottom to top). However, it stays green until all of the circles are green and then stays like this forever. The reason this happens is because stick.clear() is supposed to turn the light off. If we comment it out, all of the lights stay on forever once they are turned on.</p>
 
-Here was the first result of uploading this code to the Arduino: </p>
+            <video controls>
+                <source src="./IMG_9061.mp4" type="video/mp4">
+            </video>
 
-<br>
+            <p>I then wanted to figure out how to change the direction of the sequential lighting. To do this, I changed the initial value of curPixel to 7 instead of 0 so it starts at the top. Then, I changed the increment of curPixel++ to curPixel- - so that it moves down. Finally, I changed the for loop to say that if curPixel < 0, then curPixel = 7 ; this means that once it gets to the bottom, it should start again from the top.</p>
 
-<img src="IMG_9038.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
+            <video controls>
+                <source src="./IMG_9064.mp4" type="video/mp4">
+            </video>
 
-<br>
+            <p> The final aspect of Neopixel control I wanted to experiment with was controlling the amount of pixels that were lit up. To do this, I wrote the following code.</p>
 
-<video controls width = "500px">
-  <source src = "./IMG_9039.MOV" type = "video/mp4">
-</video>
+            [CODE 3]
 
-<p> I then wrote code for the rainbow marquee-theater effect that I wanted. This was the result: </p>
+            <p> This code sets the color of the Neopixel strip according to the binary representation of that number. Using the specified color,  it waits for the delay before repeating the process. The loop function basically calls the showBinary function with a specified color, delay, and number.</p>
 
-<br>
+            <img src="IMG_9065.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<img src="IMG_9047.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
-<img src="IMG_9051.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
-<img src="IMG_9057.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
+            <p> When I increased the numberToDisplay from 170 to 250, more of the circles lit up.</p>
 
-<br>
+            <img src="IMG_9066.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<video controls width = "500px">
-  <source src = "./IMG_9049.mp4" type = "video/mp4">
-</video>
-<video controls width = "500px">
-  <source src = "./IMG_9053.mp4" type = "video/mp4">
-</video>
+            <p>When I decreased the numbertoDisplay from 170 to 100), fewer circles lit up.</p>
 
-<br>
+            <img src="IMG_9067.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<p> I then wanted to take it up a notch and learn how to create an effect where each pixel lights up in sequence. To do this, I wrote the following code: </p>
+            <p>I then set byte numberToDisplay = 0 instead of 170 before the loop. Then, in the loop, in showBinary, I put numberToDisplay ++ so that it counted up each time.</p>
 
-[code 2]
+            <video controls>
+                <source src="./IMG_9068.mp4" type="video/mp4">
+            </video>
 
-<p> What this code does is in the `loop()` function, it lights up one pixel at a time in green, waits for half a second, and then moves to the next pixel. Essentially, what we expect to see is the green light moving from bottom to top, one circle at a time; once it gets to the top, it starts again from the bottom. </p>
+            <p>Once I found that I had a pretty good grasp of how to control and manipulate the Neopixel through my Arduino code, I felt confident about setting off on my mission to control the neopixel with an ultrasonic distance sensor! </p>
 
-<video controls width = "500px">
-  <source src = "./IMG_9058.mp4" type = "video/mp4">
-</video>
+            <h4></h4>
 
-<p> I then wanted to experiment with changing different elements of the code and seeing how this would impact my light display. I commented out stick.clear(). 
+            <p>Using the datasheet pinout, I hooked up the US-100 ultrasonic distance sensor to my board quite simply, only requiring the addition of five more connections.</p>
 
-Starting with the bottom circle, each circle turns green in order (from bottom to top). However, it stays green until all of the circles are green and then stays like this forever. The reason this happens is because stick.clear() is supposed to turn the light off. If we comment it out, all of the lights stay on forever once they are turned on. </p>
+            <img src="US100connectiondiagram.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<video controls width = "500px">
-  <source src = "./IMG_9061.mp4" type = "video/mp4">
-</video>
+            <p> This is what my final circuit looked like. </p>
 
-<p> I then wanted to figure out how to change the direction of the sequential lighting. To do this, I changed the initial value of curPixel to 7 instead of 0 so it starts at the top. Then, I changed the increment of curPixel++ to curPixel- - so that it moves down. Finally, I changed the for loop to say that if curPixel < 0, then curPixel = 7 ; this means that once it gets to the bottom, it should start again from the top. </p>
+            <img src="IMG_9081_2.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<video controls width = "500px">
-  <source src = "./IMG_9064.mp4" type = "video/mp4">
-</video>
+            <p> I then produced the following code to control my Neopixel based on distance measurements received via UART (Universal Asynchronous Receiver-Transmitter) serial communication. </p>
 
-<p> The final aspect of Neopixel control I wanted to experiment with was controlling the amount of pixels that were lit up. To do this, I wrote the following code. </p>
+            [CODE 4]
 
-[code 3]
+            <p> I began by defining constants for the pin number, the number of LEDs, and the maximum distance to be measured. The bin width is calculated to determine how far each LED represents in terms of distance. An Adafruit NeoPixel object named "stick" is initialized for controlling the LED strip. In the `setup()` function, the primary and secondary serial communications are initiated, the NeoPixel strip is prepared for use, its brightness is set, and a short delay is introduced to stabilize the setup. In the main `loop()` function, the code sends a command (0x55) to request distance data from a sensor. It then waits until two bytes of data are available to read from the UART buffer, combining these bytes into a single 16-bit integer that represents the measured distance. The distance value is printed to the Serial Monitor for debugging. The code then calculates how many LEDs to light based on the distance, ensuring it does not exceed the total number of LEDs. It clears any previous states of the NeoPixels, lights up the appropriate number of LEDs in red, and updates the strip to reflect these changes. Finally, a brief delay is introduced before the loop repeats.</p>
 
-<p> This code sets the color of the Neopixel strip according to the binary representation of that number. Using the specified color,  it waits for the delay before repeating the process. The loop function basically calls the showBinary function with a specified color, delay, and number. </p>
+            <p>After uploading this code, I was able to visually represent distance measurements using my Neopixel, with each lit LED corresponding to a specific range of distances!</p>
 
-<br>
+            <video controls>
+                <source src="./IMG_9088.mp4" type="video/mp4">
+            </video>
 
-<img src="IMG_9065.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
+            <p> Unfortunately, the problem that I continued running into was that the Neopixel strip was not properly connecting to the breadboard. This led me to have to hold the Neopixel strip down and at a specific angle for it to actually work.</p>
 
-<br>
+            <p>To remedy this, I decided to fix the soldering job on the Neopixel to improve its connection. This is what my circuit looked like after the wires were soldered onto the Neopixel and then added back to my circuit:</p>
 
-<p> When I increased the numberToDisplay from 170 to 250, more of the circles lit up. </p>
+            <img src="IMG_9089.jpg.jpg" alt="stuck display" style="width: 50%; height: auto;">
 
-<br>
+            <p> I uploaded my code again and found that with the connection to the board now improved through soldering, everything worked so much better! Here is the new and improved video demo: </p>
 
-<img src="IMG_9066.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
+            <video controls>
+                <source src="./IMG_9092.mp4" type="video/mp4">
+            </video>
 
-<br>
 
-<p>When I decreased the numbertoDisplay from 170 to 100), fewer circles lit up.</p> 
 
-<br>
 
-<img src="IMG_9067.jpg" alt="neopixelcircuit" style="width: 600px; height: auto;">
 
-<br>
 
-<p>I then set byte numberToDisplay = 0 instead of 170 before the loop. Then, in the loop, in showBinary, I put numberToDisplay ++ so that it counted up each time.</p>
 
-<video controls width = "500px">
-  <source src = "./IMG_9068.mp4" type = "video/mp4">
-</video>
 
-<p> Once I found that I had a pretty good grasp of how to control and manipulate the Neopixel through my Arduino code, I felt confident about setting off on my mission to control the neopixel with an ultrasonic distance sensor! </p>
 
-<h13>Controlling Neopixels with Sensors</h13>
 
-<p> Using the datasheet pinout, I hooked up the US-100 ultrasonic distance sensor to my board quite simply, only requiring the addition of five more connections. </p>
 
-<br>
 
-<img src="US100connectiondiagram.jpg" alt="connect distance sensor" style="width: 600px; height: auto;">
 
-<br>
 
-<p> This is what my final circuit looked like. </p>
 
-<br>
 
-<img src="IMG_9081_2.jpg" alt="connect distance sensor" style="width: 600px; height: auto;">
 
-<br>
 
-<p> I then produced the following code to control my Neopixel based on distance measurements received via UART (Universal Asynchronous Receiver-Transmitter) serial communication. </p>
 
-[code 4]
 
-<p> I began by defining constants for the pin number, the number of LEDs, and the maximum distance to be measured. The bin width is calculated to determine how far each LED represents in terms of distance. An Adafruit NeoPixel object named "stick" is initialized for controlling the LED strip. In the `setup()` function, the primary and secondary serial communications are initiated, the NeoPixel strip is prepared for use, its brightness is set, and a short delay is introduced to stabilize the setup. In the main `loop()` function, the code sends a command (0x55) to request distance data from a sensor. It then waits until two bytes of data are available to read from the UART buffer, combining these bytes into a single 16-bit integer that represents the measured distance. The distance value is printed to the Serial Monitor for debugging. The code then calculates how many LEDs to light based on the distance, ensuring it does not exceed the total number of LEDs. It clears any previous states of the NeoPixels, lights up the appropriate number of LEDs in red, and updates the strip to reflect these changes. Finally, a brief delay is introduced before the loop repeats. 
 
-After uploading this code, I was able to visually represent distance measurements using my Neopixel, with each lit LED corresponding to a specific range of distances! </p>
 
-<video controls width = "500px">
-  <source src = "./IMG_9088.mp4" type = "video/mp4">
-</video>
 
-<p> Unfortunately, the problem that I continued running into was that the Neopixel strip was not properly connecting to the breadboard. This led me to have to hold the Neopixel strip down and at a specific angle for it to actually work.
 
-To remedy this, I decided to fix the soldering job on the Neopixel to improve its connection. This is what my circuit looked like after the wires were soldered onto the Neopixel and then added back to my circuit: </p>
 
-<br>
 
-<img src="IMG_9089.jpg" alt="connect distance sensor" style="width: 600px; height: auto;">
 
-<br>
 
-<p> I uploaded my code again and found that with the connection to the board now improved through soldering, everything worked so much better! Here is the new and improved video demo: </p>
 
-<video controls width = "500px">
-  <source src = "./IMG_9092.mp4" type = "video/mp4">
-</video>
 
 
-</div>
-</xmp>
+
+
+
+
+
+
+
+
+
+            <div style="text-align: center;">
+                <div style="display: inline-block;">
+                    <img src="IMG_9650.jpg" alt="esp32 pinout" class="img-fluid" style="width: 600px; height: 500px; margin-right: 10px;">
+                </div>
+                <div style="display: inline-block;">
+                    <img src="IMG_9645.jpg" alt="oled pinout" class="img-fluid" style="width: 600px; height: 500px;">
+                </div>
+            </div>
+
+            <p>The correct code is displayed below: </p>
+
+            <p>Here is a video of the stepper motor rotating after uploading the code:</p>
+
+            <video controls>
+                <source src="./IMG_9644.mp4" type="video/mp4">
+            </video>
+
+            <h4>Step 2: Rough Prototyping with Legos</h4>
+
+            <p>We then used legos to start doing some very rough prototyping with our rotating steppor motor. We used a heat gun to attach lego wheels onto our motor to analyze its motion.</p>
+
+            <p>Then, using the legos, we started experimenting with different design options. We liked the idea of using a gear system with a front and back axle to rotate the wheels. We experimented with several different orientations of this gear syste below:</p>
+
+            <div style="text-align: center;">
+                <div style="display: inline-block; width: 300px; height: 300px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./IMG_9649.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div style="display: inline-block; width: 300px; height: 300px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./IMG_9647.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div style="display: inline-block; width: 300px; height: 300px;">
+                    <video controls style="width: 100%; height: 100%;">
+                        <source src="./IMG_9648.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <p>We settled on what we believed was the most efficient system and captured an image of it:</p>
+
+            <img src="IMG_9652.jpg" alt="stuck display" style="width: 50%; height: auto;">
+
+            <p>We began building a rough prototype as a proof of concept of our motion. In this iteration, we wanted to mostly pay attention to housing our different components in an economical way. When everything was taped together, our rough prototype looked like this:</p>
+
+            <video controls>
+                <source src="./IMG_9710.mp4" type="video/mp4">
+            </video>
+
+            <p>Here is a video of the rough prototype in action:</p>
+
+             <video controls>
+                <source src="./IMG_9715.mp4" type="video/mp4">
+            </video>
+
+            <h4>Step 3: Servo Activation</h4>
+
+            <p>With the remaining time we had, we also constructed a quick circuit to get the servo moving so that we could now incorporate the front wheels into our design.</p>
+
+            <p>The code for the servo can be accessed below:</p>
+
+            <p>Here is a video of the servo in action:</p>
+
+            <video controls>
+                <source src="./IMG_9717.mp4" type="video/mp4">
+            </video>
+
+            <h4>Next Steps</h4>
+
+            <p>Going forward, we need to more effectively secure all of our pieces together in a more streamlined prototype and work on integrating our design with the snakehead team to accommodate the servo. We also need to begin 3D printing pieces to warehouse the different components and secure them together more reliably. With this, we should accomplish a more polished prototype. </p>
+
+            <h4>Final Prototype Iteration I </h4>
+
+            <p>When our team reconvened, we spent time sketching our final design. Pictured below are several sketches of our first idea.</p>
+
+            <p>Based on these sketches, we began 3D printing several pieces. The first part we printed was an L bracket, which would be secured to the servo. This bracket was designed to hold the camera and connect to the front wheels. We positioned the camera at the front to capture potential obstacles, while the front wheels were linked to the servo to control turning. The motor-powered rear wheels would then follow the rotation of the front wheels. </p>
+
+            <p>The .stl file for the L bracket is pictured below:</p>
+
+            <p>The next parts we 3D printed were the gearbox, gears, and the front and back axles. Initially, we planned to position the motor behind the servo to save space. However, we discovered that the motor would interfere with the servo, limiting its rotation. As a result, we decided to house and secure the motor separately. We designed a gearbox to enclose the motor and turn the axle. Additionally, we created a connector on the gearbox to attach it to the servo compartment, making the setup resemble a train.</p>
+
+            <p>The .stl file for the gear box, gears, and axles is pictured below:</p>
+
+            <h4>Final Prototype Iteration I in Action</h4>
+
+            <p>After printing all the components, we began assembling our first final prototype iteration. During the first assembly, however, we realized that the dimensions of our prints were too precise, leaving very little tolerance. As a result, we had to reprint the axles, making them smaller to fit properly within the holes. Once the sizing was corrected and all the pieces were secured, we conducted a proof-of-concept test to ensure the pipe robot moved and turned as expected. The test was successful!</p>
+
+            <img src="IMG_9770.jpg" alt="stuck display" style="width: 50%; height: auto;">
+
+            <p>Here is a video of the forward movement!</p>
+
+            <video controls>
+                <source src="./IMG_0018.mp4" type="video/mp4">
+            </video>
+
+            <p>Here is a video demonstrating the successful turning!</p>
+
+            <video controls>
+                <source src="./IMG_0024.mp4" type="video/mp4">
+            </video>
+
+            <h4>PROBLEM!</h4>
+
+            <p>Sadly, our design wasn't perfect. We realized that it was too wide to fit within the pipe. To address this, we needed to completely redesign the gearbox to reduce its width. This involved raising the gearbox to allow the wheels to be placed directly underneath, rather than on the sides, which helped minimize the overall width. We then began 3D modeling a new gearbox for the second iteration of our final prototype.</p>
+
+            <h4>Final Prototype Iteration II</h4>
+
+            <p>In progress...</p>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-3">
+        <p>© 2024 PS 70
+    </footer>
+
 </body>
-
-<script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
-
-</html>
